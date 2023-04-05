@@ -1,26 +1,20 @@
-using System.Windows.Input;
 using Jajo.Exporter.Services;
+using Jajo.Exporter.ViewModels;
 
 namespace Jajo.Exporter.Commands;
 
-public class NavigateCommand : ICommand
+public class NavigateCommand<TViewModel> : CommandBase
+where TViewModel : ViewModelBase
 {
-    private readonly NavigationService _navigationService;
+    private readonly NavigationService<TViewModel> _navigationService;
 
-    public NavigateCommand(NavigationService navigationService)
+    public NavigateCommand(NavigationService<TViewModel> navigationService)
     {
         _navigationService = navigationService;
     }
-    
-    public bool CanExecute(object parameter)
-    {
-        return true;
-    }
 
-    public void Execute(object parameter)
+    public override void Execute(object parameter)
     {
         _navigationService.Navigate();
     }
-
-    public event EventHandler CanExecuteChanged;
 }

@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Jajo.Exporter.ViewModels;
+﻿using Jajo.Exporter.ViewModels;
 
 namespace Jajo.Exporter.Stores;
 
 public class NavigationStore
 {
+    // Is used to be subscribed on a propertychanged event for the CurrentViewModel property in MainViewModel
+    public event Action CurrentViewModelChanged;
+
     private ViewModelBase _currentViewModel;
 
     public ViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
-        set => _currentViewModel = value;
+        set
+        {
+            _currentViewModel = value;
+            OnCurrentViewModelChanged();
+        }
+    }
+
+    private void OnCurrentViewModelChanged()
+    {
+        CurrentViewModelChanged?.Invoke();
     }
 }

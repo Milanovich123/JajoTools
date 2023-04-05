@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using Jajo.Exporter.ViewModels;
 using Jajo.Exporter.ViewModels.Utils;
 
@@ -17,16 +18,20 @@ public partial class MainView
         DataContext = mainViewModel;
     }
 
-    public ViewModelBase CurrentViewModel { get; set; }
-
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
         _mainViewModel.OnApplicationClosing();
     }
 
+    private void Window_TopPart_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        DragMove();
+    }
+
+    // Shows MessageBox with text using MVVM
     private void ShowMessage(string text)
     {
-        MessageBox.Show(this, text, "Внимание");
+        MessageBox.Show(this, text, "Attention");
     }
 
     public MainView()

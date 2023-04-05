@@ -4,6 +4,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace Jajo.Exporter.Services;
 
+/// <summary>
+/// This class is used to determine what should be done 
+/// </summary>
 public class ApplicationHostService : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;

@@ -48,13 +48,14 @@
 
                 <Grid
                     Grid.ColumnSpan="2"
-                    HorizontalAlignment="Left"
-                    Panel.ZIndex="2"
-                    Width="950">
+                    Panel.ZIndex="10">
+
+                    <!--Used to move the window-->
+                    <Border Panel.ZIndex="0"
+                            Background="Transparent"
+                            MouseLeftButtonDown="Window_TopPart_MouseLeftButtonDown"/>
 
                     <StackPanel
-                        Canvas.Right="10"
-                        Canvas.Top="5"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
                         <Button
@@ -75,6 +76,7 @@
                     </StackPanel>
                 </Grid>
 
+
                 <Border
                     Background="{StaticResource DarkBlue}"
                     CornerRadius="10 0 0 0"
@@ -94,8 +96,7 @@
                     Background="{StaticResource DarkBlue}"
                     CornerRadius="0 0 0 10"
                     Grid.Column="0"
-                    Grid.Row="1"
-                    Panel.ZIndex="0">
+                    Grid.Row="1">
 
                     <Grid>
                         <Grid.RowDefinitions>

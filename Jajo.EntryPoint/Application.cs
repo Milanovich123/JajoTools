@@ -6,6 +6,9 @@ namespace Jajo.EntryPoint;
 [UsedImplicitly]
 public class Application : ExternalApplication
 {
+    /// <summary>
+    /// The entry point for exporter and tools plugin
+    /// </summary>
     public override void OnStartup()
     {
         var panel = Application.CreatePanel("Utils", "Jajo");

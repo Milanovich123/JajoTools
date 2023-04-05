@@ -68,7 +68,7 @@
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="*" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<ProjectReference Include="..\Jajo.Exporter\Jajo.Exporter.csproj" />
-		<ProjectReference Include="..\Tools\Jajo.Tools.csproj" />
+		<ProjectReference Include="..\Jajo.Tools\Jajo.Tools.csproj" />
 	    <Reference Include="System.ComponentModel.DataAnnotations" />
 	    <Using Include="Nice3point.Revit.Extensions" />
 	    <Using Include="JetBrains.Annotations" />

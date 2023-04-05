@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace Jajo.Exporter;
 
+/// <summary>
+/// This class adds dependency injection principle to a wpf application
+/// </summary>
 public static class Host
 {
     private static IHost _host;
@@ -47,19 +50,20 @@ public static class Host
                 services.AddSingleton<NavigationStore>();
                 
                 services.AddScoped<IMainViewModel, MainViewModel>();
-                services.AddScoped<NavigationService>();
             })
             .Build();
 
         await _host.StartAsync();
     }
-    
+
+    [UsedImplicitly]
     public static async Task StopHost()
     {
         await _host.StopAsync();
         _host.Dispose();
     }
 
+    [UsedImplicitly]
     public static T GetService<T>() where T : class
     {
         return _host.Services.GetService(typeof(T)) as T;

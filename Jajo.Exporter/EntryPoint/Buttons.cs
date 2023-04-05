@@ -1,10 +1,13 @@
 using Autodesk.Revit.UI;
-using Jajo.Exporter.Commands;
 
 namespace Jajo.Exporter.EntryPoint;
 
 public static class Buttons
 {
+    /// <summary>
+    /// Creates a button in a Revit tabpanel
+    /// </summary>
+    /// <param name="panel"></param>
     public static void CreateButton(RibbonPanel panel)
     {
         var showButton = panel.AddPushButton<ExporterCommand>("Exporter");
