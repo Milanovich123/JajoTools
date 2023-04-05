@@ -1,0 +1,10 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>Jajo.EntryPoint</Name>
+        <Assembly>Jajo/Tools/Jajo.EntryPoint.dll</Assembly>
+        <AddInId>B7A2F8B2-41AF-400B-9EC0-445385DEEF64</AddInId>
+        <FullClassName>Jajo.EntryPoint.Application</FullClassName>
+        <VendorId>Jajo</VendorId>
+        <VendorDescription>EntryPoint</VendorDescription>
+    </AddIn>
+</RevitAddIns>

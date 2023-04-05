@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    mc:Ignorable="presentationOptions">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Assets/Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush
+        x:Key="DarkBlue"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource DarkBlueColor}" />
+    <SolidColorBrush
+        x:Key="MainBlue"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource MainBlueColor}" />
+    <SolidColorBrush
+        x:Key="LightBlue"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource LightBlueColor}" />
+    <SolidColorBrush
+        x:Key="MainGreen"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource MainGreenColor}" />
+    <SolidColorBrush
+        x:Key="White"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush
+        x:Key="MainGray"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource MainGrayColor}" />
+    <SolidColorBrush
+        x:Key="Black"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource BlackColor}" />
+
+</ResourceDictionary>

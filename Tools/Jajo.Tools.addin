@@ -1,0 +1,10 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>Jajo.Tools</Name>
+        <Assembly>Jajo/Tools/Jajo.Tools.dll</Assembly>
+        <AddInId>8B4E1C5C-4C89-4604-B03A-7277D3CEF992</AddInId>
+        <FullClassName>Jajo.Tools.Application</FullClassName>
+        <VendorId>Jajo</VendorId>
+        <VendorDescription>Tools</VendorDescription>
+    </AddIn>
+</RevitAddIns>
