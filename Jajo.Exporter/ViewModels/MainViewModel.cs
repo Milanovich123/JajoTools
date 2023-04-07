@@ -15,7 +15,7 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
     
     private ICommand _onWindowLoadedCommand;
     public ICommand SetExportViewModelCommand { get; }
-    public ICommand SetSchedularViewModelCommand { get; }
+    public ICommand SetSchedulerViewModelCommand { get; }
 
     public Action<string> ShowMessage { get; set; }
     public event EventHandler CloseRequested = delegate { }; // Invokes when the main window should be closed
@@ -34,9 +34,9 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
         // it will invoke one of this command
         SetExportViewModelCommand = new NavigateCommand<ExportViewModel>(
             new NavigationService<ExportViewModel>(navigationStore, () => new ExportViewModel()));
-        SetSchedularViewModelCommand =
-            new NavigateCommand<SchedularViewModel>(
-                new NavigationService<SchedularViewModel>(navigationStore, () => new SchedularViewModel()));
+        SetSchedulerViewModelCommand =
+            new NavigateCommand<SchedulerViewModel>(
+                new NavigationService<SchedulerViewModel>(navigationStore, () => new SchedulerViewModel()));
     }
 
     public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;

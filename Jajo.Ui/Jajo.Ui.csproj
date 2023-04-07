@@ -60,12 +60,32 @@
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
+    <ItemGroup>
+      <None Remove="Resources\Fonts\AeonikPro-Regular.ttf" />
+      <None Remove="Resources\Fonts\AeonikProRegular.ttf" />
+      <None Remove="Resources\Fonts\aeonikprotrial-bold.otf" />
+      <None Remove="Resources\Fonts\aeonikprotrial-light.otf" />
+      <None Remove="Resources\Fonts\aeonikprotrial-regular.otf" />
+      <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
+    </ItemGroup>
 
     <ItemGroup>
 	    <PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
 	    <PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
 	    <Using Include="Nice3point.Revit.Extensions" />
 	    <Using Include="JetBrains.Annotations" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Resources\Fonts\AeonikPro-Regular.ttf" />
+      <Resource Include="Resources\Fonts\aeonikprotrial-bold.otf" />
+      <Resource Include="Resources\Fonts\aeonikprotrial-light.otf" />
+      <Resource Include="Resources\Fonts\aeonikprotrial-regular.otf" />
+      <Resource Include="Resources\Fonts\Montserrat-Regular.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controls\UserControls\" />
     </ItemGroup>
 	
 

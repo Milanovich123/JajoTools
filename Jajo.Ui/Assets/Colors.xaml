@@ -7,6 +7,7 @@
     <Color x:Key="WhiteColor">#FFFFFF</Color>
     <Color x:Key="MainGrayColor">#E6E6E6</Color>
     <Color x:Key="BlackColor">#000000</Color>
+    <Color x:Key="BluePressedColor">#ACBBE4</Color>
 
     <!--#region External colors from the WPF UI library-->
 

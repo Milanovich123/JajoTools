@@ -2,9 +2,9 @@ using System.Windows.Controls;
 
 namespace Jajo.Exporter.Views.Pages;
 
-public partial class SchedularView : UserControl
+public partial class SchedulerView : UserControl
 {
-    public SchedularView()
+    public SchedulerView()
     {
         InitializeComponent();
     }

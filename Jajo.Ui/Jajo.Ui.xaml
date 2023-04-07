@@ -8,10 +8,9 @@
         <!--#endregion-->
 
         <!--#region Styles-->
-
+        <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/DynamicSvg.xaml" />
-        <!-- <ResourceDictionary Source="pack://application:,,,/ClashesManager.UI;component/Styles/MenuItem.xaml" /> -->
-        <!-- <ResourceDictionary Source="pack://application:,,,/ClashesManager.UI;component/Styles/ContextMenu.xaml" /> -->
+        <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/RadioButton.xaml" />
 
         <!--#endregion-->
 

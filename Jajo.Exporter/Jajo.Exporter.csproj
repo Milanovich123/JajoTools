@@ -79,7 +79,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Jajo.Ui\Jajo.Ui.csproj" />
       <ProjectReference Include="..\Jajo.Utils\Jajo.Utils.csproj" />
-      <ProjectReference Include="..\Ui\Jajo.Ui.csproj" />
     </ItemGroup>
 
 	<!--TODO: Update and uncomment this information-->

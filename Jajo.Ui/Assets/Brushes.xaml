@@ -36,5 +36,10 @@
         x:Key="Black"
         presentationOptions:Freeze="True"
         Color="{StaticResource BlackColor}" />
+    <SolidColorBrush
+        x:Key="BluePressed"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource BluePressedColor}" />
+
 
 </ResourceDictionary>
