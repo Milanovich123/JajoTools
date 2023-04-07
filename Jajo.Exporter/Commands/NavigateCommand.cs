@@ -4,7 +4,7 @@ using Jajo.Exporter.ViewModels;
 namespace Jajo.Exporter.Commands;
 
 public class NavigateCommand<TViewModel> : CommandBase
-where TViewModel : ViewModelBase
+where TViewModel : IViewModelBase
 {
     private readonly NavigationService<TViewModel> _navigationService;
 

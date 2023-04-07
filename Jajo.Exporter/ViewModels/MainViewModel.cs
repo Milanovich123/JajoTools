@@ -39,7 +39,7 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
                 new NavigationService<SchedulerViewModel>(navigationStore, () => new SchedulerViewModel()));
     }
 
-    public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+    public IViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
     
     [RelayCommand]
     private void Close()

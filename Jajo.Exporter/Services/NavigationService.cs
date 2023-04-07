@@ -8,7 +8,7 @@ namespace Jajo.Exporter.Services;
 /// see more https://www.youtube.com/watch?v=N26C_Cq-gAY&list=PLA8ZIAm2I03ggP55JbLOrXl6puKw4rEb2
 /// </summary>
 /// <typeparam name="TViewModel"></typeparam>
-public class NavigationService<TViewModel> where TViewModel : ViewModelBase
+public class NavigationService<TViewModel> where TViewModel : IViewModelBase
 {
     private readonly NavigationStore _navigationStore;
     private readonly Func<TViewModel> _createViewModel;

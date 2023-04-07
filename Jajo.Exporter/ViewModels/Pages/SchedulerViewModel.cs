@@ -1,6 +1,6 @@
 namespace Jajo.Exporter.ViewModels.Pages;
 
-public class SchedulerViewModel : ViewModelBase
+public class SchedulerViewModel : IViewModelBase
 {
     
 }

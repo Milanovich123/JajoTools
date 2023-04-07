@@ -7,9 +7,9 @@ public class NavigationStore
     // Is used to be subscribed on a propertychanged event for the CurrentViewModel property in MainViewModel
     public event Action CurrentViewModelChanged;
 
-    private ViewModelBase _currentViewModel;
+    private IViewModelBase _currentViewModel;
 
-    public ViewModelBase CurrentViewModel
+    public IViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
         set

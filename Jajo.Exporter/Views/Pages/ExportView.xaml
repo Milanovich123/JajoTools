@@ -1,27 +1,126 @@
 <UserControl
-    d:DesignHeight="300"
-    d:DesignWidth="300"
+    d:DesignHeight="625"
+    d:DesignWidth="950"
     mc:Ignorable="d"
     x:Class="Jajo.Exporter.Views.Pages.ExportView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:j="http://jajo.com/xaml">
+    xmlns:j="http://jajo.com/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:pages="clr-namespace:Jajo.Exporter.ViewModels.Pages"
+    d:DataContext="{d:DesignInstance pages:ExportViewModel}">
 
-<UserControl.Resources>
-    <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Jajo.Ui.xaml" />
-        </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-</UserControl.Resources>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Jajo.Ui.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
     <Grid>
-        <TextBlock FontSize="25" Text="ExportView" />
-        <j:Button Height="30"
-                  Width="100"
-                  Appearance="JajoPrimary"
-                  Content="Hello world"/>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="95" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!--First column-->
+            <Grid>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource AeonikPro16R}"
+                                   Text="Select phase"
+                                   Margin="0 0 10 0" />
+                        <RadioButton Content="VO/DO" />
+                        <RadioButton Content="TO/UO" />
+                    </StackPanel>
+
+
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="46"
+                                    Height="36"
+                                    CornerRadius="5 5 0 0"
+                                    Background="White"
+                                    Opacity="0.7">
+                                <CheckBox HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                            </Border>
+                            <TextBlock Text="Select all/Select none"
+                                       Style="{StaticResource AeonikPro13R}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <ScrollViewer
+                        Height="300"
+                        Width="320"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Visible">
+                        <ScrollViewer.Background>
+                            <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
+                        </ScrollViewer.Background>
+
+                        <ItemsControl
+                            x:Name="PluginsCollection"
+                            Margin="0,0"
+                            Padding="10,10"
+                            ItemsSource="{Binding ExportViews}"
+                            ScrollViewer.CanContentScroll="True"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <CheckBox
+                                            x:Name="PluginNotificationChBox"
+                                            FontFamily="{StaticResource Montserrat}">
+                                            <!--IsChecked="{Binding IsNotifiable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="{Binding ElementName=NotificationForCertainPluginsChBox, Path=IsChecked}"
+                                            Style="{StaticResource InstallationManagerCheckBoxStyle}">-->
+
+                                            <b:Interaction.Triggers>
+                                                <b:EventTrigger EventName="Checked">
+                                                    <b:InvokeCommandAction
+                                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
+                                                        CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
+                                                </b:EventTrigger>
+                                                <b:EventTrigger EventName="Unchecked">
+                                                    <b:InvokeCommandAction
+                                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
+                                                        CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
+                                                </b:EventTrigger>
+                                            </b:Interaction.Triggers>
+
+
+                                            <TextBlock Margin="10,0" Text="{Binding Path=Name}" />
+
+                                        </CheckBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                </StackPanel>
+            </Grid>
+
+
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <j:Button Height="30"
+                      Appearance="JajoPrimary"
+                      Content="Hello world" />
+        </Grid>
+
     </Grid>
 </UserControl>
