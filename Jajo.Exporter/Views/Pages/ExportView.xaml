@@ -31,7 +31,7 @@
             <TextBlock Style="{StaticResource AeonikPro16R}"
                        Text="Select phase"
                        Margin="0 0 10 0" />
-            <RadioButton Content="VO/DO" IsChecked="True"/>
+            <RadioButton Content="VO/DO" IsChecked="True" />
             <RadioButton Content="TO/UO" />
         </StackPanel>
 
@@ -64,7 +64,8 @@
                             <TextBlock Text="Select all/Select none"
                                        VerticalAlignment="Center"
                                        Margin="7 0 0 0"
-                                       Style="{StaticResource AeonikPro13R}" />
+                                       Style="{StaticResource AeonikPro13R}"
+                                       Foreground="{StaticResource StringGray}" />
                         </StackPanel>
                     </StackPanel>
 
@@ -113,7 +114,8 @@
                                                 </b:Interaction.Triggers>
 
 
-                                                <TextBlock Margin="10,0" Text="{Binding Path=Name}" />
+                                                <TextBlock Margin="6,0" Text="{Binding Path=Name}"
+                                                           Style="{StaticResource AeonikPro16R}" />
 
                                             </CheckBox>
                                         </Grid>
@@ -151,7 +153,8 @@
                             <TextBlock Text="Select all/Select none"
                                        VerticalAlignment="Center"
                                        Margin="7 0 0 0"
-                                       Style="{StaticResource AeonikPro13R}" />
+                                       Style="{StaticResource AeonikPro13R}"
+                                       Foreground="{StaticResource StringGray}" />
                         </StackPanel>
                     </StackPanel>
 
@@ -202,10 +205,9 @@
                                                             CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
                                                     </b:EventTrigger>
                                                 </b:Interaction.Triggers>
-
-
-                                                <TextBlock Margin="10,0" Text="{Binding Path=Name}" />
-
+                                                
+                                                <TextBlock Margin="6,0" Text="{Binding Path=Name}" 
+                                                           Style="{StaticResource AeonikPro16R}"/>
                                             </CheckBox>
                                         </Grid>
                                     </DataTemplate>
@@ -216,7 +218,7 @@
                     </Border>
 
                     <CheckBox Margin="10 23 0 0" IsChecked="{Binding IsExportToDwgSelected}">
-                        <TextBlock Text="Export sheets as DWG also"></TextBlock>
+                        <TextBlock Text="Export sheets as DWG also" Style="{StaticResource AeonikPro16R}" />
                     </CheckBox>
                 </StackPanel>
             </Grid>

@@ -60,14 +60,6 @@
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
-    <ItemGroup>
-      <None Remove="Resources\Fonts\AeonikPro-Regular.ttf" />
-      <None Remove="Resources\Fonts\AeonikProRegular.ttf" />
-      <None Remove="Resources\Fonts\aeonikprotrial-bold.otf" />
-      <None Remove="Resources\Fonts\aeonikprotrial-light.otf" />
-      <None Remove="Resources\Fonts\aeonikprotrial-regular.otf" />
-      <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
-    </ItemGroup>
 
     <ItemGroup>
 	    <PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />

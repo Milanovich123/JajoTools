@@ -44,5 +44,9 @@
         x:Key="DarkBlueHover"
         presentationOptions:Freeze="True"
         Color="{StaticResource DarkBlueHoverColor}" />
+    <SolidColorBrush
+        x:Key="StringGray"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource StringGrayColor}" />
 
 </ResourceDictionary>

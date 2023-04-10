@@ -36,8 +36,6 @@
 
     <Style x:Key="EnecaCheckBoxStyle" TargetType="{x:Type CheckBox}">
         <!--  Universal WPF UI focus  -->
-        <Setter Property="FocusVisualStyle" Value="{StaticResource DefaultControlFocusVisualStyle}" />
-        <!--  Universal WPF UI focus  -->
         <Setter Property="Background" Value="{StaticResource White}" />
         <Setter Property="Foreground">
             <Setter.Value>
@@ -225,21 +223,6 @@
                             <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="DefaultControlFocusVisualStyle">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle
-                        RadiusX="6"
-                        RadiusY="6"
-                        SnapsToDevicePixels="True"
-                        Stroke="{DynamicResource KeyboardFocusBorderColorBrush}"
-                        StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

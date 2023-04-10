@@ -150,7 +150,6 @@
                                     Command="{Binding SetSchedulerViewModelCommand}"
                                     Content="Scheduler">
                                 </controls:RadioButton>
-                      
                             </StackPanel>
                         </Grid>
                     </Border>
