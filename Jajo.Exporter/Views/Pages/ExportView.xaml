@@ -132,7 +132,7 @@
                   HorizontalAlignment="Right">
                 <StackPanel>
 
-                    <TextBlock Text="Select shhets to export as PDF"
+                    <TextBlock Text="Select sheets to export as PDF"
                                Style="{StaticResource AeonikPro16R}"
                                Margin="0 25" />
 
@@ -216,7 +216,7 @@
                     </Border>
 
                     <CheckBox Margin="10 23 0 0" IsChecked="{Binding IsExportToDwgSelected}">
-                        <TextBlock Text="Export sheets as DWG also>"></TextBlock>
+                        <TextBlock Text="Export sheets as DWG also"></TextBlock>
                     </CheckBox>
                 </StackPanel>
             </Grid>

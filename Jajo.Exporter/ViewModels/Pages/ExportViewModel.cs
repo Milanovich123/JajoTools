@@ -37,11 +37,11 @@ public partial class ExportViewModel : ObservableObject, IViewModelBase
             
             ExportSheets = new ObservableCollection<SheetExample>
             {
-                new() {Name = "1234-TL - Tekeninqenlijst"},
-                new() {Name = "1234-TL - Tekeninqenlijst"},
-                new() {Name = "1234-TL - Tekeninqenlijst"},
-                new() {Name = "1234-TL - Tekeninqenlijst"},
-                new() {Name = "1234-TL - Tekeninqenlijst"}
+                new() {Name = "1234-TL - Tekeningenlijst"},
+                new() {Name = "1234-TL - Tekeningenlijst"},
+                new() {Name = "1234-TL - Tekeningenlijst"},
+                new() {Name = "1234-TL - Tekeningenlijst"},
+                new() {Name = "1234-TL - Tekeningenlijst"}
             };
             return _exportSheets;
         }
