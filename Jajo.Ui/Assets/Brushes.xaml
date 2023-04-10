@@ -40,6 +40,9 @@
         x:Key="BluePressed"
         presentationOptions:Freeze="True"
         Color="{StaticResource BluePressedColor}" />
-
+    <SolidColorBrush
+        x:Key="DarkBlueHover"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource DarkBlueHoverColor}" />
 
 </ResourceDictionary>

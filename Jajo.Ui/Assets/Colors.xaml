@@ -8,6 +8,7 @@
     <Color x:Key="MainGrayColor">#E6E6E6</Color>
     <Color x:Key="BlackColor">#000000</Color>
     <Color x:Key="BluePressedColor">#ACBBE4</Color>
+    <Color x:Key="DarkBlueHoverColor">#1A3765</Color>
 
     <!--#region External colors from the WPF UI library-->
 

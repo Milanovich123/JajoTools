@@ -16,7 +16,7 @@
     <Style x:Key="AeonikPro13R" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource AeonikPro}" />
         <Setter Property="FontSize" Value="13" />
-        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontWeight" Value="Regular" />
     </Style>
 
 </ResourceDictionary>

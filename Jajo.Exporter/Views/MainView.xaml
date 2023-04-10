@@ -12,7 +12,7 @@
     xmlns:viewModels="clr-namespace:Jajo.Exporter.ViewModels"
     Title="Jajo.Jajo"
     Width="950"
-    Height="600"
+    Height="625"
     d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
     AllowsTransparency="True"
     Background="Transparent"
@@ -58,32 +58,39 @@
                             Background="Transparent"
                             MouseLeftButtonDown="Window_TopPart_MouseLeftButtonDown" />
 
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Button
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal"
+                                    Margin="20 0">
+                            <j:Button
+                                Appearance="JajoSvgPrimary"
+                                Background="Transparent"
+                                VerticalContentAlignment="Bottom"
                                 Width="25"
                                 Height="25"
-                                Click="Hide_BTN_Click">
-                                <TextBlock
-                                    Margin="0,11,0,0"
-                                    FontFamily="Segoe MDL2 Assets"
-                                    Text="&#xE921;" />
-                            </Button>
-                            <Button
+                                Click="Hide_BTN_Click"
+                                Padding="3">
+                                <j:DynamicSvg Style="{StaticResource MinimizeSvg}"
+                                              Foreground="{StaticResource MainBlue}"></j:DynamicSvg>
+                            </j:Button>
+                            <j:Button
+                                Margin="20 0 0 0"
                                 Width="25"
+                                Appearance="JajoSvgPrimary"
                                 Height="25"
+                                Background="Transparent"
+                                Padding="3"
                                 Command="{Binding CloseCommand}">
-                                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8BB;" />
-                            </Button>
+                                <j:DynamicSvg Style="{StaticResource CloseSvg}"></j:DynamicSvg>
+                            </j:Button>
                         </StackPanel>
                     </Grid>
 
                     <Grid Grid.Row="1">
                         <Grid.Resources>
                             <DataTemplate DataType="{x:Type pagesViewModels:ExportViewModel}">
-                                <pages:ExportView />
+                                <pages:ExportView  DataContext="{Binding}"/>
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type pagesViewModels:SchedulerViewModel}">
-                                <pages:SchedulerView />
+                                <pages:SchedulerView DataContext="{Binding}"/>
                             </DataTemplate>
                         </Grid.Resources>
 
@@ -101,6 +108,7 @@
                     <Border
                         Grid.Row="0"
                         Grid.Column="0"
+                        Margin="0 0 0 -1"
                         Background="{StaticResource DarkBlue}"
                         CornerRadius="10 0 0 0">
                         <Grid
@@ -112,7 +120,7 @@
                                 HorizontalAlignment="Left"
                                 Foreground="{StaticResource MainGreen}"
                                 ForegroundSecondary="{StaticResource White}"
-                                Style="{StaticResource JajoToolsLogo}" />
+                                Style="{StaticResource JajoExportLogo}" />
                         </Grid>
                     </Border>
 
@@ -129,7 +137,8 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel>
-                                <controls:RadioButton
+                                <controls:RadioButton 
+                                    IsChecked="True"
                                     Command="{Binding SetExportViewModelCommand}"
                                     Style="{StaticResource NavRadioButton}"
                                     SvgStyle="{StaticResource ExportSvg}"

@@ -4,8 +4,10 @@ using System.Runtime.Versioning;
 using Jajo.Exporter.Services;
 using Jajo.Exporter.Stores;
 using Jajo.Exporter.ViewModels;
+using Jajo.Exporter.ViewModels.Pages;
 using Jajo.Exporter.ViewModels.Utils;
 using Jajo.Exporter.Views;
+using Jajo.Exporter.Views.Pages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -48,8 +50,11 @@ public static class Host
             
                 services.AddSingleton<MainView>();
                 services.AddSingleton<NavigationStore>();
-                
-                services.AddScoped<IMainViewModel, MainViewModel>();
+                services.AddSingleton<IMainViewModel, MainViewModel>();
+                services.AddSingleton<ExportView>();
+                services.AddSingleton<ExportViewModel>();
+                services.AddSingleton<SchedulerView>();
+                services.AddSingleton<SchedulerViewModel>();
             })
             .Build();
 

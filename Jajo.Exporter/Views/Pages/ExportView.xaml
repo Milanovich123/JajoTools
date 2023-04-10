@@ -1,6 +1,6 @@
 <UserControl
-    d:DesignHeight="625"
-    d:DesignWidth="950"
+    d:DesignHeight="570"
+    d:DesignWidth="750"
     mc:Ignorable="d"
     x:Class="Jajo.Exporter.Views.Pages.ExportView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -20,13 +20,22 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid Margin="34 0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
-            <RowDefinition Height="95" />
+            <RowDefinition Height="72" />
         </Grid.RowDefinitions>
 
-        <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Style="{StaticResource AeonikPro16R}"
+                       Text="Select phase"
+                       Margin="0 0 10 0" />
+            <RadioButton Content="VO/DO" IsChecked="True"/>
+            <RadioButton Content="TO/UO" />
+        </StackPanel>
+
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -34,15 +43,11 @@
 
             <!--First column-->
             <Grid>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource AeonikPro16R}"
-                                   Text="Select phase"
-                                   Margin="0 0 10 0" />
-                        <RadioButton Content="VO/DO" />
-                        <RadioButton Content="TO/UO" />
-                    </StackPanel>
 
+                <StackPanel>
+                    <TextBlock Text="Select views to export as IFC"
+                               Style="{StaticResource AeonikPro16R}"
+                               Margin="0 25" />
 
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -52,74 +57,185 @@
                                     Background="White"
                                     Opacity="0.7">
                                 <CheckBox HorizontalAlignment="Center"
-                                          VerticalAlignment="Center" />
+                                          VerticalAlignment="Center"
+                                          Height="18"
+                                          Width="18" />
                             </Border>
                             <TextBlock Text="Select all/Select none"
+                                       VerticalAlignment="Center"
+                                       Margin="7 0 0 0"
                                        Style="{StaticResource AeonikPro13R}" />
                         </StackPanel>
                     </StackPanel>
 
-                    <ScrollViewer
-                        Height="300"
-                        Width="320"
-                        HorizontalScrollBarVisibility="Disabled"
-                        VerticalScrollBarVisibility="Visible">
-                        <ScrollViewer.Background>
-                            <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
-                        </ScrollViewer.Background>
+                    <Border Background="White"
+                            CornerRadius="0 7 7 7"
+                            Width="320"
+                            Height="300"
+                            HorizontalAlignment="Left">
+                        <ScrollViewer
+                            HorizontalAlignment="Left"
+                            Height="300"
+                            Width="320"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Visible">
+                            <ScrollViewer.Background>
+                                <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
+                            </ScrollViewer.Background>
 
-                        <ItemsControl
-                            x:Name="PluginsCollection"
-                            Margin="0,0"
-                            Padding="10,10"
-                            ItemsSource="{Binding ExportViews}"
-                            ScrollViewer.CanContentScroll="True"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ItemsControl
+                                x:Name="ViewsCollection"
+                                Margin="0,0"
+                                Padding="10,10"
+                                ItemsSource="{Binding ExportViews}"
+                                ScrollViewer.CanContentScroll="True"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto">
 
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <CheckBox
-                                            x:Name="PluginNotificationChBox"
-                                            FontFamily="{StaticResource Montserrat}">
-                                            <!--IsChecked="{Binding IsNotifiable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                            IsEnabled="{Binding ElementName=NotificationForCertainPluginsChBox, Path=IsChecked}"
-                                            Style="{StaticResource InstallationManagerCheckBoxStyle}">-->
-
-                                            <b:Interaction.Triggers>
-                                                <b:EventTrigger EventName="Checked">
-                                                    <b:InvokeCommandAction
-                                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
-                                                        CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
-                                                </b:EventTrigger>
-                                                <b:EventTrigger EventName="Unchecked">
-                                                    <b:InvokeCommandAction
-                                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
-                                                        CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
-                                                </b:EventTrigger>
-                                            </b:Interaction.Triggers>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <CheckBox
+                                                Margin="4 0 0 0"
+                                                x:Name="PluginNotificationChBox"
+                                                IsChecked="{Binding IsSelected}"
+                                                FontFamily="{StaticResource Montserrat}">
+                                                <b:Interaction.Triggers>
+                                                    <b:EventTrigger EventName="Checked">
+                                                        <b:InvokeCommandAction
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
+                                                            CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
+                                                    </b:EventTrigger>
+                                                    <b:EventTrigger EventName="Unchecked">
+                                                        <b:InvokeCommandAction
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
+                                                            CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
+                                                    </b:EventTrigger>
+                                                </b:Interaction.Triggers>
 
 
-                                            <TextBlock Margin="10,0" Text="{Binding Path=Name}" />
+                                                <TextBlock Margin="10,0" Text="{Binding Path=Name}" />
 
-                                        </CheckBox>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
+                                            </CheckBox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+                    </Border>
 
                 </StackPanel>
             </Grid>
 
+            <!--Second column-->
+            <Grid Grid.Column="1"
+                  HorizontalAlignment="Right">
+                <StackPanel>
 
+                    <TextBlock Text="Select shhets to export as PDF"
+                               Style="{StaticResource AeonikPro16R}"
+                               Margin="0 25" />
+
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="46"
+                                    Height="36"
+                                    CornerRadius="5 5 0 0"
+                                    Background="White"
+                                    Opacity="0.7">
+                                <CheckBox HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Height="18"
+                                          Width="18" />
+                            </Border>
+                            <TextBlock Text="Select all/Select none"
+                                       VerticalAlignment="Center"
+                                       Margin="7 0 0 0"
+                                       Style="{StaticResource AeonikPro13R}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border Background="White"
+                            CornerRadius="0 7 7 7"
+                            Width="320"
+                            Height="300"
+                            HorizontalAlignment="Left">
+                        <ScrollViewer
+                            HorizontalAlignment="Left"
+                            Height="300"
+                            Width="320"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Visible">
+                            <ScrollViewer.Background>
+                                <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
+                            </ScrollViewer.Background>
+
+                            <ItemsControl
+                                x:Name="ShetsCollection"
+                                Margin="0,0"
+                                Padding="10,10"
+                                ItemsSource="{Binding ExportSheets}"
+                                ScrollViewer.CanContentScroll="True"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <CheckBox
+                                                Margin="4 0 0 0"
+                                                x:Name="PluginNotificationChBox"
+                                                IsChecked="{Binding IsSelected}"
+                                                FontFamily="{StaticResource Montserrat}">
+                                                <!--IsChecked="{Binding IsNotifiable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsEnabled="{Binding ElementName=NotificationForCertainPluginsChBox, Path=IsChecked}"
+                                            Style="{StaticResource InstallationManagerCheckBoxStyle}">-->
+
+                                                <b:Interaction.Triggers>
+                                                    <b:EventTrigger EventName="Checked">
+                                                        <b:InvokeCommandAction
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
+                                                            CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
+                                                    </b:EventTrigger>
+                                                    <b:EventTrigger EventName="Unchecked">
+                                                        <b:InvokeCommandAction
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.UpdateCheckBoxesStateCommand}"
+                                                            CommandParameter="{Binding ElementName=PluginNotificationChBox}" />
+                                                    </b:EventTrigger>
+                                                </b:Interaction.Triggers>
+
+
+                                                <TextBlock Margin="10,0" Text="{Binding Path=Name}" />
+
+                                            </CheckBox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+                    </Border>
+
+                    <CheckBox Margin="10 23 0 0" IsChecked="{Binding IsExportToDwgSelected}">
+                        <TextBlock Text="Export sheets as DWG also>"></TextBlock>
+                    </CheckBox>
+                </StackPanel>
+            </Grid>
         </Grid>
 
-
-        <Grid Grid.Row="1">
-            <j:Button Height="30"
+        <Grid Grid.Row="2"
+              VerticalAlignment="Top">
+            <j:Button Height="40"
+                      Width="130"
                       Appearance="JajoPrimary"
-                      Content="Hello world" />
+                      Content="Help"
+                      HorizontalAlignment="Left"
+                      Command="{Binding HelpCommand}" />
+            <j:Button Height="40"
+                      Width="130"
+                      HorizontalAlignment="Right"
+                      Appearance="JajoPrimary"
+                      Content="Export"
+                      Command="{Binding ExportCommand}" />
         </Grid>
 
     </Grid>

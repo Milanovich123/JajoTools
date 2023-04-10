@@ -56,7 +56,7 @@
     <Style x:Key="NavRadioButton" TargetType="{x:Type controls:RadioButton}">
 
         <!--<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />-->
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -82,7 +82,8 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="7">
 
-                            <Grid HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid HorizontalAlignment="Left"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50" />
                                     <ColumnDefinition />
@@ -116,25 +117,25 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <!--<Trigger Property="HasContent" Value="true">
-                            <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}" />
-                            <Setter Property="Padding" Value="4,-1,0,0" />
-                        </Trigger>-->
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="Cursor" Value="Hand"/>
                             <Setter TargetName="radioButtonBorder" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Opacity="0.75" Color="{StaticResource LightBlueColor}" />
+                                    <SolidColorBrush Color="{StaticResource DarkBlueHoverColor}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.Disabled.Background}" />
-                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.Disabled.Border}" />
+                            <Setter TargetName="radioButtonBorder" Property="Background"
+                                    Value="{StaticResource RadioButton.Disabled.Background}" />
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush"
+                                    Value="{StaticResource RadioButton.Disabled.Border}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.Pressed.Background}" />
-                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.Pressed.Border}" />
+                            <Setter TargetName="radioButtonBorder" Property="Background"
+                                    Value="{StaticResource RadioButton.Pressed.Background}" />
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush"
+                                    Value="{StaticResource RadioButton.Pressed.Border}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter TargetName="radioButtonBorder" Property="Background">

@@ -20,7 +20,7 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
     public Action<string> ShowMessage { get; set; }
     public event EventHandler CloseRequested = delegate { }; // Invokes when the main window should be closed
 
-    public MainViewModel(NavigationStore navigationStore)
+    public MainViewModel(IServiceProvider serviceProvider, NavigationStore navigationStore)
     {
         // To see how navigation works and is implemented step by step
         // https://www.youtube.com/watch?v=N26C_Cq-gAY&list=PLA8ZIAm2I03ggP55JbLOrXl6puKw4rEb2
@@ -28,15 +28,17 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
         // Registering navigation store and setting startup page
         _navigationStore = navigationStore;
         _navigationStore.CurrentViewModelChanged += () => OnPropertyChanged(nameof(CurrentViewModel));
-        _navigationStore.CurrentViewModel = new ExportViewModel();
 
         // Registering navigation commands, so after clicking a radiobutton
         // it will invoke one of this command
         SetExportViewModelCommand = new NavigateCommand<ExportViewModel>(
-            new NavigationService<ExportViewModel>(navigationStore, () => new ExportViewModel()));
+            new NavigationService<ExportViewModel>(navigationStore, () => (ExportViewModel)serviceProvider.GetService(typeof(ExportViewModel))));
         SetSchedulerViewModelCommand =
             new NavigateCommand<SchedulerViewModel>(
-                new NavigationService<SchedulerViewModel>(navigationStore, () => new SchedulerViewModel()));
+                new NavigationService<SchedulerViewModel>(navigationStore, () => (SchedulerViewModel)serviceProvider.GetService(typeof(SchedulerViewModel))));
+
+        // Setting export view to be shown firstly on the startup of the application
+        SetExportViewModelCommand.Execute(null);
     }
 
     public IViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;

@@ -240,6 +240,63 @@
             </Trigger>
             <!--#endregion-->
 
+
+            <!--#region JajoPromarySvgButton style -->
+            <Trigger Property="Appearance" Value="JajoSvgPrimary">
+                <Setter Property="OverridesDefaultStyle" Value="True" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:Button}">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding Border.CornerRadius}"
+                                Height="{TemplateBinding Height}"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                MinWidth="{TemplateBinding MinWidth}"
+                                Padding="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                Width="{TemplateBinding Width}"
+                                x:Name="ContentBorder">
+                                <ContentPresenter
+                                    Content="{TemplateBinding Content}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    TextElement.Foreground="{TemplateBinding Foreground}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    x:Name="ContentPresenter">
+                                    <ContentPresenter.ContentTemplate>
+                                        <DataTemplate DataType="{x:Type controls:DynamicSvg}">
+                                            <controls:DynamicSvg
+                                                Margin="{Binding ElementName=ContentPresenter}"
+                                                Foreground="{StaticResource LightBlue}"
+                                                Style="{Binding ElementName=ContentPresenter, Path=Content.Style}"
+                                                x:Name="DynamicSvg" />
+                                            <DataTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=ContentBorder, Path=IsMouseOver}" Value="True">
+                                                    <Setter Property="Foreground" TargetName="DynamicSvg" Value="{StaticResource DarkBlue}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsEnabled}" Value="False">
+                                                    <Setter Property="Foreground" TargetName="DynamicSvg" Value="{StaticResource MainGray}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsPressed}" Value="True">
+                                                    <Setter Property="Foreground" TargetName="DynamicSvg" Value="{StaticResource BluePressedColor}" />
+                                                </DataTrigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ContentPresenter.ContentTemplate>
+                                </ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <!--#endregion-->
         </Style.Triggers>
     </Style>
 
