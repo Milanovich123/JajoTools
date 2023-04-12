@@ -5,6 +5,14 @@ UI plugin samples for the Jajo company
 
 ![image](https://user-images.githubusercontent.com/64738783/230911857-b1969309-88a9-4ee4-ad9b-44c7177f631e.png)
 
+# Current status
+### Export plugin:
+- Export tab - 85% done 🟢
+- Schedular tab - 10% done 🔵
+
+### Tools plugin:
+- Hide tab - 0% 🟡
+- Werkpakket - 0% 🟡
 
 # How to use
 - First of all download the project or clone the repository.
