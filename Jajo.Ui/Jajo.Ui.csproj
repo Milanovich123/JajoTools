@@ -64,9 +64,7 @@
     <ItemGroup>
 	    <PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
 	    <PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
-	    <Reference Include="Microsoft.Xaml.Behaviors">
-	      <HintPath>C:\Users\candy\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-	    </Reference>
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="*" />
 	    <Using Include="Nice3point.Revit.Extensions" />
 	    <Using Include="JetBrains.Annotations" />
     </ItemGroup>
