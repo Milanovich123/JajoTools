@@ -122,7 +122,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-    
+
             <!--#region JajoPrimaryButton style-->
             <Trigger Property="Appearance" Value="JajoPrimary">
 
@@ -135,20 +135,20 @@
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                 <Setter Property="Height" Value="35" />
                 <Setter Property="Content" Value="Content" />
-                <Setter Property="Padding" Value="15 0"/>
+                <Setter Property="Padding" Value="15,0" />
 
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:Button}">
                             <Border
-                                Background="{StaticResource LightBlue}"
-                                CornerRadius="7"
-                                Height="{TemplateBinding Height}"
+                                x:Name="border"
                                 Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Padding="{TemplateBinding Padding}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Padding="{TemplateBinding Padding}"
-                                x:Name="border">
+                                Background="{StaticResource LightBlue}"
+                                CornerRadius="7">
                                 <Border.Effect>
                                     <DropShadowEffect
                                         BlurRadius="10"
@@ -157,46 +157,45 @@
                                 </Border.Effect>
                                 <Grid>
                                     <TextBlock
-                                        Foreground="{StaticResource White}"
+                                        x:Name="Content"
                                         HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource White}"
                                         IsHitTestVisible="False"
-                                        
                                         Style="{StaticResource AeonikPro16R}"
                                         Text="{Binding Content, RelativeSource={RelativeSource AncestorType=Button}}"
-                                        VerticalAlignment="Center"
-                                        Visibility="Visible"
-                                        x:Name="Content" />
+                                        Visibility="Visible" />
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource MainGray}" />
+                                    <Setter TargetName="border" Property="Background" Value="{StaticResource MainGray}" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Trigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation
-                                                    Duration="0:0:0.2"
                                                     FillBehavior="Stop"
-                                                    From="{StaticResource LightBlueColor}"
                                                     Storyboard.TargetName="border"
                                                     Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                    To="{StaticResource MainBlueColor}" />
+                                                    From="{StaticResource LightBlueColor}"
+                                                    To="{StaticResource MainBlueColor}"
+                                                    Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource MainBlue}" />
+                                    <Setter TargetName="border" Property="Background" Value="{StaticResource MainBlue}" />
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation
-                                                    Duration="0:0:0.2"
                                                     FillBehavior="Stop"
-                                                    From="{StaticResource MainBlueColor}"
                                                     Storyboard.TargetName="border"
                                                     Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                    To="{StaticResource LightBlueColor}" />
+                                                    From="{StaticResource MainBlueColor}"
+                                                    To="{StaticResource LightBlueColor}"
+                                                    Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -206,26 +205,26 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation
-                                                    Duration="0:0:0.2"
                                                     FillBehavior="Stop"
-                                                    From="{StaticResource MainBlueColor}"
                                                     Storyboard.TargetName="border"
                                                     Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                    To="{StaticResource BluePressedColor}" />
+                                                    From="{StaticResource MainBlueColor}"
+                                                    To="{StaticResource BluePressedColor}"
+                                                    Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource LightBlue}" />
+                                    <Setter TargetName="border" Property="Background" Value="{StaticResource LightBlue}" />
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation
-                                                    Duration="0:0:0.2"
                                                     FillBehavior="Stop"
-                                                    From="{StaticResource BluePressedColor}"
                                                     Storyboard.TargetName="border"
                                                     Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                    To="{StaticResource MainBlueColor}" />
+                                                    From="{StaticResource BluePressedColor}"
+                                                    To="{StaticResource MainBlueColor}"
+                                                    Duration="0:0:0.2" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -239,7 +238,7 @@
             <!--#endregion-->
 
 
-            <!--#region JajoPromarySvgButton style -->
+            <!--#region JajoPromarySvgButton style-->
             <Trigger Property="Appearance" Value="JajoSvgPrimary">
                 <Setter Property="OverridesDefaultStyle" Value="True" />
                 <Setter Property="BorderThickness" Value="0" />
@@ -250,40 +249,40 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:Button}">
                             <Border
+                                x:Name="ContentBorder"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                MinWidth="{TemplateBinding MinWidth}"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding Border.CornerRadius}"
-                                Height="{TemplateBinding Height}"
-                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                MinHeight="{TemplateBinding MinHeight}"
-                                MinWidth="{TemplateBinding MinWidth}"
-                                Padding="{TemplateBinding Padding}"
-                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                Width="{TemplateBinding Width}"
-                                x:Name="ContentBorder">
+                                CornerRadius="{TemplateBinding Border.CornerRadius}">
                                 <ContentPresenter
-                                    Content="{TemplateBinding Content}"
+                                    x:Name="ContentPresenter"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    TextElement.Foreground="{TemplateBinding Foreground}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    x:Name="ContentPresenter">
+                                    Content="{TemplateBinding Content}"
+                                    TextElement.Foreground="{TemplateBinding Foreground}">
                                     <ContentPresenter.ContentTemplate>
                                         <DataTemplate DataType="{x:Type controls:DynamicSvg}">
                                             <controls:DynamicSvg
+                                                x:Name="DynamicSvg"
                                                 Margin="{Binding ElementName=ContentPresenter}"
                                                 Foreground="{StaticResource LightBlue}"
-                                                Style="{Binding ElementName=ContentPresenter, Path=Content.Style}"
-                                                x:Name="DynamicSvg" />
+                                                Style="{Binding ElementName=ContentPresenter, Path=Content.Style}" />
                                             <DataTemplate.Triggers>
                                                 <DataTrigger Binding="{Binding ElementName=ContentBorder, Path=IsMouseOver}" Value="True">
-                                                    <Setter Property="Foreground" TargetName="DynamicSvg" Value="{StaticResource DarkBlue}" />
+                                                    <Setter TargetName="DynamicSvg" Property="Foreground" Value="{StaticResource DarkBlue}" />
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsEnabled}" Value="False">
-                                                    <Setter Property="Foreground" TargetName="DynamicSvg" Value="{StaticResource MainGray}" />
+                                                    <Setter TargetName="DynamicSvg" Property="Foreground" Value="{StaticResource MainGray}" />
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsPressed}" Value="True">
-                                                    <Setter Property="Foreground" TargetName="DynamicSvg" Value="{StaticResource BluePressedColor}" />
+                                                    <Setter TargetName="DynamicSvg" Property="Foreground" Value="{StaticResource BluePressedColor}" />
                                                 </DataTrigger>
                                             </DataTemplate.Triggers>
                                         </DataTemplate>

@@ -86,10 +86,9 @@
                                         VerticalAlignment="Center"
                                         FontSize="{StaticResource CheckBoxIconSize}"
                                         FontWeight="Bold"
+                                        Foreground="{StaticResource White}"
                                         Style="{StaticResource CheckMark}"
-                                        Visibility="Collapsed"
-                                        Foreground="{StaticResource White}">
-                                    </controls:DynamicSvg>
+                                        Visibility="Collapsed" />
                                 </Grid>
                             </Border>
                         </BulletDecorator.Bullet>

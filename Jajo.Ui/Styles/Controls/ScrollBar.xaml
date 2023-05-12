@@ -42,7 +42,7 @@
                         <Border.Background>
                             <SolidColorBrush Opacity="0" Color="{StaticResource MainGrayColor}" />
                         </Border.Background>
-                       
+
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

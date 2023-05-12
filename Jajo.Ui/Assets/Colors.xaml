@@ -10,6 +10,7 @@
     <Color x:Key="BluePressedColor">#ACBBE4</Color>
     <Color x:Key="DarkBlueHoverColor">#1A3765</Color>
     <Color x:Key="StringGrayColor">#526279</Color>
+    <Color x:Key="WhiteBackgroundColor">#F7F7F7</Color>
 
     <!--#region External colors from the WPF UI library-->
 

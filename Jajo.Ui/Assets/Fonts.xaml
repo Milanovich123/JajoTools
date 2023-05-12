@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <FontFamily x:Key="AeonikPro">pack://application:,,,/Jajo.Ui;component/.\Resources\Fonts\#Aeonik Pro</FontFamily>
     <FontFamily x:Key="Montserrat">pack://application:,,,/Jajo.Ui;component/.\Resources\Fonts\#Montserrat</FontFamily>
 

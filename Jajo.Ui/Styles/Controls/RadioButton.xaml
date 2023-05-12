@@ -61,7 +61,7 @@
         <Setter Property="Height" Value="50" />
         <Setter Property="Width" Value="170" />
         <Setter Property="Foreground" Value="{StaticResource White}" />
-        <Setter Property="FontFamily" Value="{StaticResource AeonikPro}"/>
+        <Setter Property="FontFamily" Value="{StaticResource AeonikPro}" />
         <Setter Property="BorderThickness" Value="0" />
 
         <Setter Property="Template">
@@ -81,8 +81,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="7">
 
-                            <Grid HorizontalAlignment="Left"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50" />
                                     <ColumnDefinition />
@@ -117,7 +116,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Cursor" Value="Hand" />
                             <Setter TargetName="radioButtonBorder" Property="Background">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{StaticResource DarkBlueHoverColor}" />
@@ -125,16 +124,12 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="radioButtonBorder" Property="Background"
-                                    Value="{StaticResource RadioButton.Disabled.Background}" />
-                            <Setter TargetName="radioButtonBorder" Property="BorderBrush"
-                                    Value="{StaticResource RadioButton.Disabled.Border}" />
+                            <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.Disabled.Background}" />
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.Disabled.Border}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="radioButtonBorder" Property="Background"
-                                    Value="{StaticResource RadioButton.Pressed.Background}" />
-                            <Setter TargetName="radioButtonBorder" Property="BorderBrush"
-                                    Value="{StaticResource RadioButton.Pressed.Border}" />
+                            <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.Pressed.Background}" />
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.Pressed.Border}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter TargetName="radioButtonBorder" Property="Background">

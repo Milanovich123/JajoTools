@@ -48,5 +48,9 @@
         x:Key="StringGray"
         presentationOptions:Freeze="True"
         Color="{StaticResource StringGrayColor}" />
+    <SolidColorBrush
+        x:Key="WhiteBackground"
+        presentationOptions:Freeze="True"
+        Color="{StaticResource WhiteBackgroundColor}" />
 
 </ResourceDictionary>
