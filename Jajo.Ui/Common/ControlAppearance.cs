@@ -14,5 +14,7 @@ public enum ControlAppearance
     /// Control color according to the current theme accent.
     /// </summary>
     JajoPrimary,
-    JajoSvgPrimary
+    JajoSvgPrimary,
+    Success,
+    Failure
 }

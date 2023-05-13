@@ -19,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-
+    
     <Grid Margin="34,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -50,7 +50,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-
+            
             <!--  First column  -->
             <Grid>
                 <StackPanel>
@@ -266,6 +266,5 @@
                 Command="{Binding ExportCommand}"
                 Content="Export" />
         </Grid>
-
     </Grid>
 </UserControl>

@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using Jajo.Exporter.ViewModels;
 using Jajo.Exporter.ViewModels.Utils;
 
 namespace Jajo.Exporter.Views;
@@ -16,6 +15,8 @@ public partial class MainView
         mainViewModel.ShowMessage += ShowMessage;
         Closing += Window_Closing;
         DataContext = mainViewModel;
+
+        Ui.Common.Application.Current = this;
     }
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
