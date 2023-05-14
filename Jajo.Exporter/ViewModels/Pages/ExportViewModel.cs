@@ -15,20 +15,16 @@ public partial class ExportViewModel : PageBaseViewModel, IViewModelBase
     /// </summary>
     protected override void Export()
     {
-        if (SnackbarService is not null)
+        if (SnackbarService is null) return;
+
+        if (IsExportToDwgSelected)
         {
-            SnackbarService.Show("Hello world", ControlAppearance.Success);
+            SnackbarService.Show("Export succeed!", ControlAppearance.Success);
         }
-        // // logic when you need to export sheets to dwg format
-        // if (IsExportToDwgSelected)
-        // {
-        //     MessageBox.Show("Elements were successfully exported");
-        //     MessageBox.Show("Sheets were successfully exported as DWG");
-        // }
-        // // logic when the dwg export check box was not selected
-        // else
-        // {
-        //     MessageBox.Show("Elements were successfully exported");
-        // }
+        // logic when the dwg export check box was not selected
+        else
+        {
+            SnackbarService.Show("Export failed!", ControlAppearance.Failure);
+        }
     }
 }
