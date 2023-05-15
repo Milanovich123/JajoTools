@@ -7,8 +7,8 @@ UI plugin samples for the Jajo company
 
 # Current status
 ### Export plugin:
-- Export tab - 85% done 🟢
-- Schedular tab - 10% done 🔵
+- Export tab - 95% done 🔵
+- Schedular tab - 100% done 🟢
 
 ### Tools plugin:
 - Hide tab - 0% 🟡
