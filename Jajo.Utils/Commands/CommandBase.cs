@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Jajo.Exporter.Commands;
+namespace Jajo.Utils.Commands;
 
 /// <summary>
 /// The base for all commands that are inherited from <see cref="ICommand"/>

@@ -1,0 +1,27 @@
+{
+  "ActiveSession": {
+    "events": [ ],
+    "id": 1684159030,
+    "session_desc": {
+      "locale": "en-GB",
+      "location": null,
+      "network_info": null,
+      "session_type": 0,
+      "start_time": {
+        "server_time_offset": null,
+        "time_zone": 10800,
+        "timestamp": 1684159030
+      }
+    },
+    "EventCounter": 1,
+    "LastEventTimestamp": 1684159030,
+    "LastEventType": 2,
+    "LastUpdateTimestamp": null,
+    "ReportParameters": null
+  },
+  "CompletedSessions": [ ],
+  "ForceSend": false,
+  "ReportPackages": [ ],
+  "ReportedEventsCount": 0,
+  "LastFlushTime": "\/Date(1684159030148)\/"
+}

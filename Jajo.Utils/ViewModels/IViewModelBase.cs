@@ -1,4 +1,4 @@
-﻿namespace Jajo.Exporter.ViewModels;
+﻿namespace Jajo.Utils.ViewModels;
 
 /// <summary>
 /// Abstract class that links page view model classes

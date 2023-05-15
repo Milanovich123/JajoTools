@@ -1,8 +1,7 @@
-﻿namespace Jajo.Tools.ViewModels.Utils
+﻿namespace Jajo.Tools.ViewModels.Utils;
+
+public interface IViewModel
 {
-    public interface IViewModel
-    {
-        Action<string> ShowMessage { get; set; }
-        void OnApplicationClosing();
-    }
+    Action<string> ShowMessage { get; set; }
+    void OnApplicationClosing();
 }

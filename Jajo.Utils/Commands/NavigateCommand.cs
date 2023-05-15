@@ -1,7 +1,7 @@
-using Jajo.Exporter.Services;
-using Jajo.Exporter.ViewModels;
+using Jajo.Utils.Services;
+using Jajo.Utils.ViewModels;
 
-namespace Jajo.Exporter.Commands;
+namespace Jajo.Utils.Commands;
 
 public class NavigateCommand<TViewModel> : CommandBase
 where TViewModel : IViewModelBase

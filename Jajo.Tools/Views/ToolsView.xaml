@@ -2,110 +2,169 @@
     x:Class="Jajo.Tools.Views.ToolsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Jajo.Ui.Controls;assembly=Jajo.Ui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:viewModel="clr-namespace:Jajo.Tools.ViewModels"
-    mc:Ignorable="d"
-	xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    d:DataContext="{d:DesignInstance viewModel:ToolsViewModel}"
-    WindowStartupLocation="CenterScreen"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:j="http://jajo.com/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Jajo.Tools.Views.Pages"
+    xmlns:pagesViewModels="clr-namespace:Jajo.Tools.ViewModels.Pages"
+    xmlns:viewModels="clr-namespace:Jajo.Tools.ViewModels"
+    Title="Exporter"
+    Width="700"
+    Height="580"
+    d:DataContext="{d:DesignInstance viewModels:ToolsViewModel}"
+    AllowsTransparency="True"
+    Background="Transparent"
     ResizeMode="NoResize"
-    Title="Jajo.Tools"
-    Height="450"
-    Width="800">
-        <i:Interaction.Triggers>
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding OnWindowLoadedCommand}" />
+            <i:InvokeCommandAction Command="{Binding OnWindowLoadedCommand}" CommandParameter="{Binding ElementName=RootSnackbar}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Jajo.Ui.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 
-        <TextBlock
-            Grid.Row="0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="60"
-            Text="Jajo.Tools"/>
+    <Grid>
+        <Border Background="{StaticResource MainGray}" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+                <!--  Second column  -->
+                <Grid Grid.Column="1">
 
-            <StackPanel
-                Grid.Column="0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <CheckBox
-                    x:Name="condition_ChBox"
-                    HorizontalAlignment="Center"
-                    Content="Contition"
-                    IsChecked="{Binding IsChecked}"/>
-                <Button
-                    Width="200"
-                    Height="50"
-                    Margin="20"
-                    Content="Relay command button"
-                    Command="{Binding RelayWithConditionCommand}"
-                    CommandParameter="{Binding Path=IsChecked, Mode=OneWay}"/>
+                    <!--  Header  -->
+                    <Grid>
+                        <!--  Used to move the window  -->
+                        <Border
+                            Panel.ZIndex="0"
+                            Background="Transparent"
+                            MouseLeftButtonDown="Window_TopPart_MouseLeftButtonDown" />
 
-                <Button
-                    Grid.Column="0"
-                    Width="200"
-                    Height="50"
-                    Margin="20"
-                    Content="Simple action"
-                    Command="{Binding SimpleRelayCommand}"/>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal"
+                                    Margin="20 0">
+                            <j:Button
+                                Appearance="JajoSvgPrimary"
+                                Background="Transparent"
+                                VerticalContentAlignment="Bottom"
+                                Width="25"
+                                Height="25"
+                                Click="Hide_BTN_Click"
+                                Padding="3">
+                                <j:DynamicSvg Style="{StaticResource MinimizeSvg}"
+                                              Foreground="{StaticResource MainBlue}"></j:DynamicSvg>
+                            </j:Button>
+                            <j:Button
+                                Margin="20 0 0 0"
+                                Width="25"
+                                Appearance="JajoSvgPrimary"
+                                Height="25"
+                                Background="Transparent"
+                                Padding="3"
+                                Command="{Binding CloseCommand}">
+                                <j:DynamicSvg Style="{StaticResource CloseSvg}"></j:DynamicSvg>
+                            </j:Button>
+                        </StackPanel>
+                    </Grid>
 
-            </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.Resources>
+                            <DataTemplate DataType="{x:Type pagesViewModels:HideTabsViewModel}">
+                                <pages:HideTabsView  DataContext="{Binding}"/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type pagesViewModels:WerkpakketViewModel}">
+                                <pages:WerkpakketView DataContext="{Binding}"/>
+                            </DataTemplate>
+                        </Grid.Resources>
 
-            <StackPanel
-                Grid.Column="1">
+                        <ContentControl Content="{Binding CurrentViewModel}" />
+                    </Grid>
 
-                <TextBlock
-                    HorizontalAlignment="Center"
-                    Text="TextBox with Validation"
-                    Margin="0 0 0 5"/>
-                <TextBox
-                    Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
-                    Width="200">
-                    <Validation.ErrorTemplate>
-                        <ControlTemplate>
+                    <j:Snackbar Grid.Row="1"
+                                x:Name="RootSnackbar"
+                                Grid.Column="0"
+                                Width="400"
+                                Height="70"
+                                MaxWidth="400"
+                                MaxHeight="70"
+                                CloseButtonEnabled="True"
+                                Timeout="3000" />
+                </Grid>
+
+                <!--  First column  -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="125" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0 0 0 -1"
+                        Background="{StaticResource DarkBlue}"
+                        CornerRadius="10 0 0 0">
+                        <Grid
+                            Margin="0,26,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <controls:DynamicSvg
+                                Height="51"
+                                HorizontalAlignment="Left"
+                                Foreground="{StaticResource MainGreen}"
+                                ForegroundSecondary="{StaticResource White}"
+                                Style="{StaticResource JajoToolsLogo}" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Background="{StaticResource DarkBlue}"
+                        CornerRadius="0 0 0 10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
                             <StackPanel>
-                                <Border BorderBrush="OrangeRed" BorderThickness="2">
-                                    <AdornedElementPlaceholder/>
-                                </Border>
-                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"
-                                               HorizontalAlignment="Left"/>
+                                <controls:RadioButton 
+                                    IsChecked="True"
+                                    Command="{Binding SetExportViewModelCommand}"
+                                    Style="{StaticResource NavRadioButton}"
+                                    SvgStyle="{StaticResource HideTabsSvg}"
+                                    Content="Hide Tabs">
+                                </controls:RadioButton>
+                                <controls:RadioButton Margin="0,5"
+                                    SvgStyle="{StaticResource WerkpakketSvg}"
+                                    Style="{StaticResource NavRadioButton}"
+                                    Command="{Binding SetSchedulerViewModelCommand}"
+                                    Content="Werkpakket">
+                                </controls:RadioButton>
                             </StackPanel>
-                        </ControlTemplate>
-                    </Validation.ErrorTemplate>
-                </TextBox>
-
-                <Button
-                    Width="200"
-                    Height="50"
-                    Margin="0 40 0 20"
-                    Content="Revit API action"
-                    Command="{Binding RevitApiContextActionCommand}"/>
-
-                <Button
-                    Width="200"
-                    Height="50"
-                    Margin="20"
-                    Content="Simple Revit API action"
-                    Command="{Binding SimpleRevitApiContextActionCommand}"/>
-
-            </StackPanel>
-        </Grid>
-
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 
 </Window>

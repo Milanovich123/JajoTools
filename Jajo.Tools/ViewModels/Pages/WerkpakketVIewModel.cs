@@ -2,10 +2,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Jajo.Utils.ViewModels;
 
-namespace Jajo.Exporter.ViewModels.Pages;
+namespace Jajo.Tools.ViewModels.Pages;
 
-public abstract partial class PageBaseViewModel : ObservableObject
+public partial class WerkpakketViewModel : PageBaseViewModel
 {
     private ObservableCollection<ViewExample> _exportViews = new ();
     private ObservableCollection<SheetExample> _exportSheets = new ();
@@ -15,7 +16,7 @@ public abstract partial class PageBaseViewModel : ObservableObject
     private ICollection<SheetExample> _selectedSheets;
     private bool _isMainButtonAvailable;
 
-    protected PageBaseViewModel()
+    public WerkpakketViewModel()
     {
         // Insert logic of initial collections
         PhaseSwitched();
@@ -164,36 +165,4 @@ public abstract partial class PageBaseViewModel : ObservableObject
 
         UpdateChBoxesState();
     }
-}
-
-/// <summary>
-/// Example class of a view
-/// </summary>
-public class ViewExample : ObservableObject
-{
-    private bool _isSelected;
-
-    public bool IsSelected
-    {
-        get => _isSelected;
-        set => SetProperty(ref _isSelected, value);
-    }
-
-    public string Name { get; set; }
-}
-
-/// <summary>
-/// Example class of a sheet
-/// </summary>
-public class SheetExample : ObservableObject
-{
-    private bool _isSelected;
-
-    public bool IsSelected
-    {
-        get => _isSelected;
-        set => SetProperty(ref _isSelected, value);
-    }
-
-    public string Name { get; set; }
 }

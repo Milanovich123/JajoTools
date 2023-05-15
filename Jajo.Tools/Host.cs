@@ -1,18 +1,18 @@
 using System.IO;
 using System.Reflection;
 using System.Runtime.Versioning;
-using Jajo.Exporter.Services;
-using Jajo.Exporter.ViewModels;
-using Jajo.Exporter.ViewModels.Pages;
-using Jajo.Exporter.ViewModels.Utils;
-using Jajo.Exporter.Views;
-using Jajo.Exporter.Views.Pages;
+using Jajo.Tools.Services;
+using Jajo.Tools.ViewModels;
+using Jajo.Tools.ViewModels.Pages;
+using Jajo.Tools.ViewModels.Utils;
+using Jajo.Tools.Views;
+using Jajo.Tools.Views.Pages;
 using Jajo.Utils.Stores;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Jajo.Exporter;
+namespace Jajo.Tools;
 
 /// <summary>
 /// This class adds dependency injection principle to a wpf application
@@ -48,13 +48,13 @@ public static class Host
             {
                 services.AddHostedService<ApplicationHostService>();
             
-                services.AddSingleton<MainView>();
+                services.AddSingleton<ToolsView>();
                 services.AddSingleton<NavigationStore>();
-                services.AddSingleton<IMainViewModel, MainViewModel>();
-                services.AddSingleton<ExportView>();
-                services.AddSingleton<ExportViewModel>();
-                services.AddSingleton<SchedulerView>();
-                services.AddSingleton<SchedulerViewModel>();
+                services.AddSingleton<IViewModel, ToolsViewModel>();
+                services.AddSingleton<HideTabsView>();
+                services.AddSingleton<HideTabsViewModel>();
+                services.AddSingleton<WerkpakketView>();
+                services.AddSingleton<WerkpakketViewModel>();
             })
             .Build();
 

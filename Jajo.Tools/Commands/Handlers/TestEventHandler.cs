@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using Jajo.Tools.Core;
+using Jajo.Utils.Core;
 
 
 namespace Jajo.Tools.Commands.Handlers
@@ -18,7 +18,7 @@ namespace Jajo.Tools.Commands.Handlers
                 t.Start();
                 _showMessage.Invoke(_someText);
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 _showMessage.Invoke("Описание ошибки");
                 t.RollBack();

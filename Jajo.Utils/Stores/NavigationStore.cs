@@ -1,6 +1,6 @@
-﻿using Jajo.Exporter.ViewModels;
+﻿using Jajo.Utils.ViewModels;
 
-namespace Jajo.Exporter.Stores;
+namespace Jajo.Utils.Stores;
 
 public class NavigationStore
 {

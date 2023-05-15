@@ -1,14 +1,29 @@
-using System.Windows;
+using Jajo.Ui.Common;
+using Jajo.Ui.MVVM.Services;
+using Jajo.Utils.ViewModels;
 
 namespace Jajo.Exporter.ViewModels.Pages;
 
 public class SchedulerViewModel : PageBaseViewModel, IViewModelBase
 {
+    public SnackbarService SnackbarService { get; set; }
+
     /// <summary>
     /// Override method from abstract class
     /// </summary>
     protected override void Export()
     {
-        MessageBox.Show("Submit button was clicked");
+        if (SnackbarService is null) return;
+
+        // Just an example how to use a snackbar
+        if (IsExportToDwgSelected)
+        {
+            SnackbarService.Show("Export succeed!", ControlAppearance.Success);
+        }
+        // logic when the dwg export check box was not selected
+        else
+        {
+            SnackbarService.Show("Export failed!", ControlAppearance.Failure);
+        }
     }
 }

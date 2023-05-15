@@ -1,99 +1,74 @@
-﻿using Autodesk.Revit.DB;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Jajo.Tools.Commands;
-using Jajo.Tools.Core;
 using Jajo.Tools.ViewModels.Utils;
-using System.ComponentModel.DataAnnotations;
+using Jajo.Ui.Controls;
+using Jajo.Utils.Commands;
+using Jajo.Utils.Services;
+using Jajo.Utils.Stores;
+using Jajo.Utils.ViewModels;
 using System.Windows.Input;
+using Jajo.Tools.ViewModels.Pages;
+using Jajo.Tools.Views.Pages;
+using Jajo.Ui.MVVM.Services;
 
-namespace Jajo.Tools.ViewModels
+namespace Jajo.Tools.ViewModels;
+
+public sealed partial class ToolsViewModel : ObservableValidator, IViewModel
 {
-    public sealed class ToolsViewModel : ObservableValidator, IViewModel
+    private readonly NavigationStore _navigationStore;
+    private readonly HideTabsViewModel _hideTabsViewModel;
+    private readonly WerkpakketViewModel _werkpakketViewModel;
+
+    private ICommand _onWindowLoadedCommand;
+    public ICommand SetHideTabsViewModelCommand { get; }
+    public ICommand SetWerkpakketViewModelCommand { get; }
+
+    public Action<string> ShowMessage { get; set; }
+    public event EventHandler CloseRequested = delegate { }; // Invokes when the main window should be closed
+
+    public ToolsViewModel(NavigationStore navigationStore, HideTabsViewModel hideTabsViewModel,
+        WerkpakketViewModel werkpakketViewModel)
     {
-        private ICommand _revitApiContextActionCommand;
-        private ICommand _simpleRelayCommand;
-        private RelayCommand<bool?> _relayWithConditionCommand;
-        private ICommand _onWindowLoadedCommand;
-        private ICommand _simpleRevitApiCommand;
-        private bool _isChecked;
-        private string _text;
+        // To see how navigation works and is implemented step by step
+        // https://www.youtube.com/watch?v=N26C_Cq-gAY&list=PLA8ZIAm2I03ggP55JbLOrXl6puKw4rEb2
+    
+        // Registering navigation store and setting startup page
+        _navigationStore = navigationStore;
+        _hideTabsViewModel = hideTabsViewModel;
+        _werkpakketViewModel = werkpakketViewModel;
+        _navigationStore.CurrentViewModelChanged += () => OnPropertyChanged(nameof(CurrentViewModel));
+    
+        // Registering navigation commands, so after clicking a radiobutton
+        // it will invoke one of this command
+        SetHideTabsViewModelCommand = new NavigateCommand<HideTabsViewModel>(
+            new NavigationService<HideTabsViewModel>(navigationStore, () => hideTabsViewModel));
+        SetWerkpakketViewModelCommand =
+            new NavigateCommand<WerkpakketViewModel>(
+                new NavigationService<WerkpakketViewModel>(navigationStore, () => werkpakketViewModel));
+    
+        // Setting export view to be shown firstly on the startup of the application
+        SetHideTabsViewModelCommand.Execute(null);
+    }
 
-        public Action<string> ShowMessage { get; set; }
+    public IViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public ICommand RevitApiContextActionCommand => _revitApiContextActionCommand ??= new RelayCommand(() =>
-        {
-            //различные варианты вызова ExternalCommand можно посмотреть тут:
-            //https://github.com/Nice3point/RevitTemplates/wiki/Modeless-window
-            ToolsCommand.ExternalEvent.Raise(ShowMessage, "Revit Api Context action");
-        });
+    [RelayCommand]
+    private void Close()
+    {
+        CloseRequested.Invoke(this, EventArgs.Empty);
+    }
 
-        public ICommand SimpleRelayCommand => _simpleRelayCommand ??= new RelayCommand(() =>
-        {
-            ShowMessage?.Invoke("Simple Command");
-        });
+    // Here you can add code that will be executed before the window is shown
+    public ICommand OnWindowLoadedCommand => _onWindowLoadedCommand ??= new RelayCommand<Snackbar>(snackBar =>
+    {
+        if (snackBar is null) return;
+        var snackBarService = new SnackbarService();
+        snackBarService.SetSnackbarControl(snackBar);
+        _hideTabsViewModel.SnackbarService = snackBarService;
+        _werkpakketViewModel.SnackbarService = snackBarService;
+    });
 
-        public bool IsChecked
-        {
-            get => _isChecked;
-            set
-            {
-                if (value == _isChecked) return;
-                _isChecked = value;
-                OnPropertyChanged();
-                //сообщаем команде, что изменилось условие Predicate
-                RelayWithConditionCommand.NotifyCanExecuteChanged();
-            }
-        }
-
-        [Required(ErrorMessage = "This parameter must not be empty")]
-        public string Text
-        {
-            get => _text;
-            set
-            {
-                if (value == _text) return;
-                _text = value;
-                OnPropertyChanged();
-                ValidateProperty(_text);
-            }
-        }
-
-        public ICommand OnWindowLoadedCommand => _onWindowLoadedCommand ??= new RelayCommand(() =>
-        {
-            ShowMessage?.Invoke("Window opened");
-            ValidateAllProperties();
-        });
-
-
-        public ICommand SimpleRevitApiContextActionCommand => _simpleRevitApiCommand ??= new RelayCommand(() =>
-        {
-            ToolsCommand.DelegateEvent.Raise(() =>
-            {
-                using var t = new Transaction(RevitApi.Document, "Simple Command");
-                t.Start();
-
-                ShowMessage?.Invoke("Simple Revit Api Context action");
-
-                t.Commit();
-            });
-        });
-
-        //команда с параметром типа bool
-        public RelayCommand<bool?> RelayWithConditionCommand => _relayWithConditionCommand ??= new RelayCommand<bool?>(p =>
-            {
-                //мы можем использовать значение параметра в команде
-                ShowMessage?.Invoke("Command with condition");
-            },
-            p =>
-            {
-                //и использовать значение параметра для активации/деактивации контрола.
-                return p == true;
-            });
-
-        public void OnApplicationClosing()
-        {
-        }
-
+    public void OnApplicationClosing()
+    {
     }
 }

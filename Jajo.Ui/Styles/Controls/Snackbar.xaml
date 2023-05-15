@@ -20,7 +20,7 @@
     <Style TargetType="{x:Type controls:Snackbar}">
         <Setter Property="DynamicSvg">
             <Setter.Value>
-                <controls:DynamicSvg Style="{StaticResource CloseSvg}" Foreground="{StaticResource White}" />
+                <controls:DynamicSvg Foreground="{StaticResource White}" Style="{StaticResource CloseSvg}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground">
@@ -85,14 +85,15 @@
                                     <ColumnDefinition x:Name="ChevronColumn" Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <ContentControl Margin="10 0 0 0" 
-                                                Height="40" 
-                                                Width="40"
-                                                Content="{TemplateBinding DynamicSvg}" />
+                                <ContentControl
+                                    Width="40"
+                                    Height="40"
+                                    Margin="10,0,0,0"
+                                    Content="{TemplateBinding DynamicSvg}" />
 
                                 <StackPanel
                                     Grid.Column="1"
-                                    Margin="20 0 0 0"
+                                    Margin="20,0,0,0"
                                     VerticalAlignment="Center"
                                     SnapsToDevicePixels="True">
                                     <TextBlock
@@ -105,9 +106,9 @@
                                         TextWrapping="Wrap"
                                         Visibility="Collapsed" />
                                     <TextBlock
-                                        Style="{StaticResource AeonikPro13R}"
                                         FontSize="22"
                                         Foreground="{TemplateBinding MessageForeground}"
+                                        Style="{StaticResource AeonikPro13R}"
                                         Text="{TemplateBinding Message}"
                                         TextWrapping="Wrap" />
                                 </StackPanel>
@@ -118,16 +119,15 @@
                                 <controls:Button
                                     x:Name="CloseButton"
                                     Grid.Column="2"
-                                    Height="35"
                                     Width="35"
+                                    Height="35"
                                     Margin="12,0,0,0"
                                     Padding="8"
                                     Appearance="JajoSvgPrimary"
                                     Command="{Binding Path=TemplateButtonCommand, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
                                     CommandParameter="close"
                                     Foreground="{TemplateBinding Foreground}">
-                                    <controls:DynamicSvg Foreground="{StaticResource Black}"
-                                                         Style="{StaticResource CloseSvg}" />
+                                    <controls:DynamicSvg Foreground="{StaticResource Black}" Style="{StaticResource CloseSvg}" />
                                 </controls:Button>
                             </Grid>
                         </Border>
@@ -138,7 +138,7 @@
                             <Setter TargetName="CloseButton" Property="Margin" Value="0" />
                         </Trigger>
                         <Trigger Property="IsShown" Value="True">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
+                            <Setter Property="Visibility" Value="Visible" />
                             <Setter Property="Focusable" Value="True" />
                             <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
                             <Trigger.EnterActions>
@@ -185,8 +185,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167"
-                                                                    Value="{x:Static Visibility.Collapsed}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167" Value="{x:Static Visibility.Collapsed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -195,8 +194,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167"
-                                                                    Value="{x:Static Visibility.Visible}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167" Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -210,8 +208,7 @@
             <Trigger Property="Appearance" Value="Success">
                 <Setter Property="DynamicSvg">
                     <Setter.Value>
-                        <controls:DynamicSvg Style="{StaticResource SuccessSvg}"
-                                             Foreground="{StaticResource MainGreen}" />
+                        <controls:DynamicSvg Foreground="{StaticResource MainGreen}" Style="{StaticResource SuccessSvg}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Foreground">
@@ -238,8 +235,7 @@
             <Trigger Property="Appearance" Value="Failure">
                 <Setter Property="DynamicSvg">
                     <Setter.Value>
-                        <controls:DynamicSvg Style="{StaticResource FailureSvg}"
-                                             Foreground="{StaticResource MainBlue}" />
+                        <controls:DynamicSvg Foreground="{StaticResource MainBlue}" Style="{StaticResource FailureSvg}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Foreground">

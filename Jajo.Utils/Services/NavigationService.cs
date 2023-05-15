@@ -1,7 +1,7 @@
-using Jajo.Exporter.Stores;
-using Jajo.Exporter.ViewModels;
+using Jajo.Utils.Stores;
+using Jajo.Utils.ViewModels;
 
-namespace Jajo.Exporter.Services;
+namespace Jajo.Utils.Services;
 
 /// <summary>
 /// A service that sets CurrentViewModel property in NavigationStore

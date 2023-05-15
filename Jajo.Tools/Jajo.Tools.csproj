@@ -61,24 +61,28 @@
     </PropertyGroup>
 
     <ItemGroup>
-	    <PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
-        <PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*" />
-        <PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*" />
-	    <PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+		<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
+		<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*" />
+		<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*" />
+		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="*" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-	    <Reference Include="System.ComponentModel.DataAnnotations" />
-	    <Using Include="Nice3point.Revit.Extensions" />
-	    <Using Include="JetBrains.Annotations" />
+		<Reference Include="System.ComponentModel.DataAnnotations" />
+		<Using Include="Nice3point.Revit.Extensions" />
+		<Using Include="JetBrains.Annotations" />
         <None Remove="Resources\Icons\JajoLogo16.png" />
-        <Resource Include="Resources\Icons\JajoLogo16.png" />
         <None Remove="Resources\Icons\JajoLogo32.png" />
-        <Resource Include="Resources\Icons\JajoLogo32.png" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Jajo.Ui\Jajo.Ui.csproj" />
       <ProjectReference Include="..\Jajo.Utils\Jajo.Utils.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Resources\Icons\JajoLogo16.png" />
+      <Resource Include="Resources\Icons\JajoLogo32.png" />
     </ItemGroup>
 	
 

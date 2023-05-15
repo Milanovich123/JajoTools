@@ -3,11 +3,11 @@ using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace Jajo.Exporter.ViewModels.Pages;
+namespace Jajo.Tools.ViewModels.Pages;
 
-public abstract partial class PageBaseViewModel : ObservableObject
+public partial class HideTabsViewModel : PageBaseViewModel
 {
-    private ObservableCollection<ViewExample> _exportViews = new ();
+    private ObservableCollection<ViewExample> _tabs = new ();
     private ObservableCollection<SheetExample> _exportSheets = new ();
     private bool _isExportToDwgSelected;
     private bool _switchPhaseBoolValue;
@@ -15,17 +15,17 @@ public abstract partial class PageBaseViewModel : ObservableObject
     private ICollection<SheetExample> _selectedSheets;
     private bool _isMainButtonAvailable;
 
-    protected PageBaseViewModel()
+    public HideTabsViewModel()
     {
         // Insert logic of initial collections
         PhaseSwitched();
     }
     
     // In real project you should change type
-	public ObservableCollection<ViewExample> ExportViews
+	public ObservableCollection<ViewExample> Tabs
     {
-        get => _exportViews;
-        private set => SetProperty(ref _exportViews, value);
+        get => _tabs;
+        private set => SetProperty(ref _tabs, value);
     }
 
     public ObservableCollection<SheetExample> ExportSheets
@@ -78,7 +78,7 @@ public abstract partial class PageBaseViewModel : ObservableObject
     [RelayCommand]
     private void UpdateChBoxesState()
     {
-        SelectedViews = ExportViews.Where(i => i.IsSelected).ToList();
+        SelectedViews = Tabs.Where(i => i.IsSelected).ToList();
         SelectedSheets = ExportSheets.Where(i => i.IsSelected).ToList();
 
         if (SelectedSheets.Count > 0 || SelectedViews.Count > 0)
@@ -100,7 +100,7 @@ public abstract partial class PageBaseViewModel : ObservableObject
         if (SwitchPhaseBoolValue)
         {
             // Insert there logic of finding TO/UO stage files
-            ExportViews = new ObservableCollection<ViewExample>
+            Tabs = new ObservableCollection<ViewExample>
             {
                 new() {Name="(TO/UO) first view"},
                 new() {Name="(TO/UO) second view"},
@@ -119,7 +119,7 @@ public abstract partial class PageBaseViewModel : ObservableObject
         else
         {
             // Insert there logic of finding VO/DO stage files
-            ExportViews = new ObservableCollection<ViewExample>
+            Tabs = new ObservableCollection<ViewExample>
             {
                 new() {Name="(VO/DO) first view"},
                 new() {Name="(VO/DO) second view"},
@@ -144,7 +144,7 @@ public abstract partial class PageBaseViewModel : ObservableObject
     {
         if (o is not bool boolValue) return;
 
-        foreach (var view in ExportViews)
+        foreach (var view in Tabs)
         {
             view.IsSelected = boolValue;
         }
