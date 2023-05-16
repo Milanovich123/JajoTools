@@ -47,14 +47,14 @@
                                 CornerRadius="5 5 0 0"
                                 Opacity="0.7">
                                 <CheckBox
-                                    x:Name="HeaderViewChBox"
+                                    x:Name="HeaderTabChBox"
                                     Width="18"
                                     Height="18"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
-                                            <b:InvokeCommandAction Command="{Binding ChangeAllViewSelectionCommand}" CommandParameter="{Binding ElementName=HeaderViewChBox, Path=IsChecked}" />
+                                            <b:InvokeCommandAction Command="{Binding ChangeAllTabsSelectionCommand}" CommandParameter="{Binding ElementName=HeaderTabChBox, Path=IsChecked}" />
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </CheckBox>
@@ -70,7 +70,7 @@
 
                     <Border
                         Width="320"
-                        Height="280"
+                        Height="300"
                         HorizontalAlignment="Left"
                         Background="White"
                         CornerRadius="0 7 7 7">
@@ -139,7 +139,7 @@
                 Height="40"
                 HorizontalAlignment="Center"
                 Appearance="JajoPrimary"
-                Command="{Binding ExportCommand}"
+                Command="{Binding ShowTabsCommand}"
                 Content="Show"
                 IsEnabled="{Binding IsMainButtonAvailable, Mode=OneWay}" />
             <j:Button
@@ -148,7 +148,7 @@
                 Height="40"
                 HorizontalAlignment="Center"
                 Appearance="JajoPrimary"
-                Command="{Binding ExportCommand}"
+                Command="{Binding HideTabsCommand}"
                 Content="Hide"
                 IsEnabled="{Binding IsMainButtonAvailable, Mode=OneWay}" />
         </Grid>

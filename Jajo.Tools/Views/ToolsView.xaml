@@ -109,7 +109,7 @@
                 </Grid>
 
                 <!--  First column  -->
-                <Grid>
+                <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="125" />
                         <RowDefinition />
@@ -148,7 +148,7 @@
                             <StackPanel>
                                 <controls:RadioButton 
                                     IsChecked="True"
-                                    Command="{Binding SetExportViewModelCommand}"
+                                    Command="{Binding SetHideTabsViewModelCommand}"
                                     Style="{StaticResource NavRadioButton}"
                                     SvgStyle="{StaticResource HideTabsSvg}"
                                     Content="Hide Tabs">
@@ -156,7 +156,7 @@
                                 <controls:RadioButton Margin="0,5"
                                     SvgStyle="{StaticResource WerkpakketSvg}"
                                     Style="{StaticResource NavRadioButton}"
-                                    Command="{Binding SetSchedulerViewModelCommand}"
+                                    Command="{Binding SetWerkpakketViewModelCommand}"
                                     Content="Werkpakket">
                                 </controls:RadioButton>
                             </StackPanel>

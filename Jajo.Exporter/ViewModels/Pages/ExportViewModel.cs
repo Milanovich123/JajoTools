@@ -4,7 +4,7 @@ using Jajo.Utils.ViewModels;
 
 namespace Jajo.Exporter.ViewModels.Pages;
 
-public partial class ExportViewModel : PageBaseViewModel, IViewModelBase
+public class ExportViewModel : PageBaseViewModel, IViewModelBase
 {
     public SnackbarService SnackbarService { get; set; }
 

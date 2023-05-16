@@ -2,72 +2,58 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Jajo.Utils.ViewModels;
+using Jajo.Ui.Common;
 
 namespace Jajo.Tools.ViewModels.Pages;
 
 public partial class WerkpakketViewModel : PageBaseViewModel
 {
-    private ObservableCollection<ViewExample> _exportViews = new ();
-    private ObservableCollection<SheetExample> _exportSheets = new ();
-    private bool _isExportToDwgSelected;
-    private bool _switchPhaseBoolValue;
-    private ICollection<ViewExample> _selectedViews;
-    private ICollection<SheetExample> _selectedSheets;
-    private bool _isMainButtonAvailable;
+    private ObservableCollection<CompanyExample> _companies = new();
+    private string _workpackageName;
+
+    public CompanyExample SelectedCompany { get; set; }
+
+    public string WorkpackageName
+    {
+        get => _workpackageName;
+        set => SetProperty(ref _workpackageName, value);
+    }
 
     public WerkpakketViewModel()
     {
         // Insert logic of initial collections
-        PhaseSwitched();
+        CreateCompaniesCollection();
     }
-    
+
     // In real project you should change type
-	public ObservableCollection<ViewExample> ExportViews
+    public ObservableCollection<CompanyExample> Companies
     {
-        get => _exportViews;
-        private set => SetProperty(ref _exportViews, value);
-    }
-
-    public ObservableCollection<SheetExample> ExportSheets
-    {
-        get => _exportSheets;
-        private set => SetProperty(ref _exportSheets, value);
-    }
-
-    public ICollection<ViewExample> SelectedViews
-    {
-        get => _selectedViews;
-        set => SetProperty(ref _selectedViews, value);
-    }
-
-    public ICollection<SheetExample> SelectedSheets
-    {
-        get => _selectedSheets;
-        set => SetProperty(ref _selectedSheets, value);
-    }
-
-    public bool SwitchPhaseBoolValue
-    {
-        get => _switchPhaseBoolValue;
-        set => SetProperty(ref _switchPhaseBoolValue, value);
-    }
-
-    public bool IsExportToDwgSelected
-    {
-        get => _isExportToDwgSelected;
-        set => SetProperty(ref _isExportToDwgSelected, value);
-    }
-
-    public bool IsMainButtonAvailable
-    {
-        get => _isMainButtonAvailable;
-        set => SetProperty(ref _isMainButtonAvailable, value);
+        get => _companies;
+        private set => SetProperty(ref _companies, value);
     }
 
     [RelayCommand]
-    protected virtual void Export()
+    private void UpdateSelectedCompany()
     {
+        SelectedCompany = Companies.FirstOrDefault(c => c.IsSelected);
+    }
+
+    [RelayCommand]
+    private void Update()
+    {
+        SnackbarService.Show("Update completed", ControlAppearance.Success);
+    }
+
+    [RelayCommand]
+    private void CreateStandardWorkpackage()
+    {
+        SnackbarService.Show("Workpackage created", ControlAppearance.Success);
+    }
+
+    [RelayCommand]
+    private void CreateCustomWorkpackage()
+    {
+        SnackbarService.Show("Workpackage created", ControlAppearance.Success);
     }
 
     [RelayCommand]
@@ -76,93 +62,30 @@ public partial class WerkpakketViewModel : PageBaseViewModel
         MessageBox.Show("Help button clicked");
     }
 
-    [RelayCommand]
-    private void UpdateChBoxesState()
+    private void CreateCompaniesCollection()
     {
-        SelectedViews = ExportViews.Where(i => i.IsSelected).ToList();
-        SelectedSheets = ExportSheets.Where(i => i.IsSelected).ToList();
+        Companies = new ObservableCollection<CompanyExample>
+        {
+            new() { Name = "Hercuton" },
+            new() { Name = "SBP" },
+            new() { Name = "Remco" },
+            new() { Name = "Pvvt" }
+        };
+    }
+}
 
-        if (SelectedSheets.Count > 0 || SelectedViews.Count > 0)
-        {
-            IsMainButtonAvailable = true;
-        }
-        else
-        {
-            IsMainButtonAvailable = false;
-        }
+/// <summary>
+///     Example class of a tab
+/// </summary>
+public class CompanyExample : ObservableObject
+{
+    private bool _isSelected;
+
+    public bool IsSelected
+    {
+        get => _isSelected;
+        set => SetProperty(ref _isSelected, value);
     }
 
-    /// <summary>
-    /// Happens when phase switcher changed it's value
-    /// </summary>
-    [RelayCommand]
-    private void PhaseSwitched()
-    {
-        if (SwitchPhaseBoolValue)
-        {
-            // Insert there logic of finding TO/UO stage files
-            ExportViews = new ObservableCollection<ViewExample>
-            {
-                new() {Name="(TO/UO) first view"},
-                new() {Name="(TO/UO) second view"},
-                new() {Name="(TO/UO) third view"},
-            };
-
-            ExportSheets = new ObservableCollection<SheetExample>
-            {
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"}
-            };
-        }
-        else
-        {
-            // Insert there logic of finding VO/DO stage files
-            ExportViews = new ObservableCollection<ViewExample>
-            {
-                new() {Name="(VO/DO) first view"},
-                new() {Name="(VO/DO) second view"},
-                new() {Name="(VO/DO) third view"},
-            };
-
-            ExportSheets = new ObservableCollection<SheetExample>
-            {
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"}
-            };
-        }
-
-        UpdateChBoxesState();
-    }
-
-    [RelayCommand]
-    private void ChangeAllViewSelection(object o)
-    {
-        if (o is not bool boolValue) return;
-
-        foreach (var view in ExportViews)
-        {
-            view.IsSelected = boolValue;
-        }
-
-        UpdateChBoxesState();
-    }
-    
-    [RelayCommand]
-    private void ChangeAllSheetsSelection(object o)
-    {
-        if (o is not bool boolValue) return;
-
-        foreach (var sheet in ExportSheets)
-        {
-            sheet.IsSelected = boolValue;
-        }
-
-        UpdateChBoxesState();
-    }
+    public string Name { get; set; }
 }

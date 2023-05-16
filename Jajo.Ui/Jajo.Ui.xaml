@@ -16,6 +16,7 @@
         <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/ScrollBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/Snackbar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Styles/Controls/TextBox.xaml" />
 
         <!--#endregion-->
 

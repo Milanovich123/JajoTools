@@ -12,6 +12,7 @@ public partial class ToolsView
     {
         _viewModel = viewModel;
         viewModel.ShowMessage += ShowMessage;
+        viewModel.CloseRequested += (_,_) => Close();
         Closing += Window_Closing;
         DataContext = viewModel;
 

@@ -4,4 +4,6 @@ public interface IViewModel
 {
     Action<string> ShowMessage { get; set; }
     void OnApplicationClosing();
+
+    event EventHandler CloseRequested;
 }
