@@ -12,8 +12,8 @@ public static class Buttons
     {
         var showButton = panel.AddPushButton<ExporterCommand>("Exporter");
         
-        showButton.SetImage("/Jajo.Exporter;component/Resources/Icons/JajoLogo32.png");
-        showButton.SetLargeImage("/Jajo.Exporter;component/Resources/Icons/JajoLogo32.png");
+        showButton.SetImage("/Jajo.Exporter;component/Resources/Icons/ExportIcon16.png");
+        showButton.SetLargeImage("/Jajo.Exporter;component/Resources/Icons/ExportIcon32.png");
         showButton.ToolTip = "Jajo Exporter";
         showButton.LongDescription = "This application is used to...";
     }

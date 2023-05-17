@@ -26,7 +26,7 @@ public partial class HideTabsViewModel : PageBaseViewModel
         private set => SetProperty(ref _tabs, value);
     }
 
-    public ICollection<TabExample> SelectedTabs
+    private ICollection<TabExample> SelectedTabs
     {
         get => _selectedTabs;
         set => SetProperty(ref _selectedTabs, value);
@@ -35,14 +35,25 @@ public partial class HideTabsViewModel : PageBaseViewModel
     public bool IsMainButtonAvailable
     {
         get => _isMainButtonAvailable;
-        set => SetProperty(ref _isMainButtonAvailable, value);
+        private set => SetProperty(ref _isMainButtonAvailable, value);
     }
 
-    public void CreateTabCollection()
+    private void CreateTabCollection()
     {
         Tabs = new ObservableCollection<TabExample>
         {
             new() { Name = "Architecture" },
+            new() { Name = "Structure" },
+            new() { Name = "Steel" },
+            new() { Name = "Precast" },
+            new() { Name = "Systems" },
+            new() { Name = "Annotate" },
+            new() { Name = "View" },
+            new() { Name = "DiRoots" },
+            new() { Name = "Modify" },
+            new() { Name = "Insert" },
+
+            new() { Name = "Lololo" },
             new() { Name = "Structure" },
             new() { Name = "Steel" },
             new() { Name = "Precast" },

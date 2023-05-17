@@ -60,6 +60,9 @@
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
+    <ItemGroup>
+      <None Remove="Resources\Icons\ExportIcon16.png" />
+    </ItemGroup>
 
     <ItemGroup>
 	    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
@@ -72,13 +75,17 @@
 	    <Reference Include="System.ComponentModel.DataAnnotations" />
 	    <Using Include="Nice3point.Revit.Extensions" />
 	    <Using Include="JetBrains.Annotations" />
-	    <Resource Include="Resources\Icons\JajoLogo16.png" />
-	    <Resource Include="Resources\Icons\JajoLogo32.png" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Jajo.Ui\Jajo.Ui.csproj" />
       <ProjectReference Include="..\Jajo.Utils\Jajo.Utils.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Resources\Icons\ExportIcon16.png" />
+      <Resource Include="Resources\Icons\ExportIcon32.png">
+      </Resource>
     </ItemGroup>
 
 	<!--TODO: Update and uncomment this information-->
