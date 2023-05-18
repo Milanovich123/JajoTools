@@ -109,7 +109,7 @@
                     HorizontalAlignment="Center"
                     Appearance="JajoPrimary"
                     Command="{Binding UpdateCommand}"
-                    Content="Update"/>
+                    Content="Update" />
 
                 <j:Button
                     Width="130"
@@ -148,10 +148,10 @@
                     Text="Create your own workpackage" />
 
                 <j:TextBox Height="40" Width="220"
-                         HorizontalAlignment="Center"
-                         PlaceholderText="Workpackage name..."
-                         PlaceholderEnabled="True"
-                         Text="{Binding WorkpackageName, Mode=TwoWay}"/>
+                           HorizontalAlignment="Center"
+                           PlaceholderText="Workpackage name..."
+                           PlaceholderEnabled="True"
+                           Text="{Binding WorkpackageName, Mode=TwoWay}" />
             </StackPanel>
 
             <j:Button

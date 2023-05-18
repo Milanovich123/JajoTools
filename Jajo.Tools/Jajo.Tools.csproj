@@ -1,70 +1,70 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <UseWPF>true</UseWPF>
-        <LangVersion>latest</LangVersion>
-        <PlatformTarget>x64</PlatformTarget>
-        <ImplicitUsings>true</ImplicitUsings>
-        <TargetFramework>net48</TargetFramework>
-        <Configurations>Debug R19;Debug R20;Debug R21;Debug R22;Debug R23</Configurations>
-        <Configurations>$(Configurations);Release R19;Release R20;Release R21;Release R22;Release R23</Configurations>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
-	    <XamlDebuggingInformation>True</XamlDebuggingInformation>
-	    <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('Release'))">
-        <Optimize>true</Optimize>
-        <DebugType>none</DebugType>
-        <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('R19'))">
-        <RevitVersion>2019</RevitVersion>
-        <DefineConstants>$(DefineConstants);R19</DefineConstants>
-	    <StartAction>Program</StartAction>
-	    <StartProgram>C:\Program Files\Autodesk\Revit 2019\Revit.exe</StartProgram>
-	    <StartArguments>/language ENG</StartArguments>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('R20'))">
-	    <StartAction>Program</StartAction>
-	    <StartProgram>C:\Program Files\Autodesk\Revit 2020\Revit.exe</StartProgram>
-	    <StartArguments>/language ENG</StartArguments>
+	<PropertyGroup>
+		<UseWPF>true</UseWPF>
+		<LangVersion>latest</LangVersion>
+		<PlatformTarget>x64</PlatformTarget>
+		<ImplicitUsings>true</ImplicitUsings>
+		<TargetFramework>net48</TargetFramework>
+		<Configurations>Debug R19;Debug R20;Debug R21;Debug R22;Debug R23</Configurations>
+		<Configurations>$(Configurations);Release R19;Release R20;Release R21;Release R22;Release R23</Configurations>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('Debug'))">
+		<XamlDebuggingInformation>True</XamlDebuggingInformation>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('Release'))">
+		<Optimize>true</Optimize>
+		<DebugType>none</DebugType>
+		<DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('R19'))">
+		<RevitVersion>2019</RevitVersion>
+		<DefineConstants>$(DefineConstants);R19</DefineConstants>
+		<StartAction>Program</StartAction>
+		<StartProgram>C:\Program Files\Autodesk\Revit 2019\Revit.exe</StartProgram>
+		<StartArguments>/language ENG</StartArguments>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('R20'))">
+		<StartAction>Program</StartAction>
+		<StartProgram>C:\Program Files\Autodesk\Revit 2020\Revit.exe</StartProgram>
+		<StartArguments>/language ENG</StartArguments>
 		<RevitVersion>2020</RevitVersion>
-        <DefineConstants>$(DefineConstants);R20</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('R21'))">
-	    <StartAction>Program</StartAction>
-	    <StartProgram>C:\Program Files\Autodesk\Revit 2021\Revit.exe</StartProgram>
-	    <StartArguments>/language ENG</StartArguments>
+		<DefineConstants>$(DefineConstants);R20</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('R21'))">
+		<StartAction>Program</StartAction>
+		<StartProgram>C:\Program Files\Autodesk\Revit 2021\Revit.exe</StartProgram>
+		<StartArguments>/language ENG</StartArguments>
 		<RevitVersion>2021</RevitVersion>
-        <DefineConstants>$(DefineConstants);R21</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('R22'))">
-	    <StartAction>Program</StartAction>
-	    <StartProgram>C:\Program Files\Autodesk\Revit 2022\Revit.exe</StartProgram>
-	    <StartArguments>/language ENG</StartArguments>
+		<DefineConstants>$(DefineConstants);R21</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('R22'))">
+		<StartAction>Program</StartAction>
+		<StartProgram>C:\Program Files\Autodesk\Revit 2022\Revit.exe</StartProgram>
+		<StartArguments>/language ENG</StartArguments>
 		<RevitVersion>2022</RevitVersion>
-        <DefineConstants>$(DefineConstants);R22</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Configuration.Contains('R23'))">
-	    <StartAction>Program</StartAction>
-	    <StartProgram>C:\Program Files\Autodesk\Revit 2023\Revit.exe</StartProgram>
-	    <StartArguments>/language ENG</StartArguments>
+		<DefineConstants>$(DefineConstants);R22</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('R23'))">
+		<StartAction>Program</StartAction>
+		<StartProgram>C:\Program Files\Autodesk\Revit 2023\Revit.exe</StartProgram>
+		<StartArguments>/language ENG</StartArguments>
 		<RevitVersion>2023</RevitVersion>
-        <DefineConstants>$(DefineConstants);R23</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup>
-        <Version>$(RevitVersion)</Version>
-        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    </PropertyGroup>
-    <ItemGroup>
-      <None Remove="Resources\Icons\Tools32.png" />
-      <None Remove="Resources\Icons\ToolsExtended32.png" />
-    </ItemGroup>
+		<DefineConstants>$(DefineConstants);R23</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup>
+		<Version>$(RevitVersion)</Version>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Resources\Icons\Tools32.png" />
+		<None Remove="Resources\Icons\ToolsExtended32.png" />
+	</ItemGroup>
 
-    <ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
 		<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
 		<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*" />
@@ -75,18 +75,18 @@
 		<Reference Include="System.ComponentModel.DataAnnotations" />
 		<Using Include="Nice3point.Revit.Extensions" />
 		<Using Include="JetBrains.Annotations" />
-    </ItemGroup>
+	</ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Jajo.Ui\Jajo.Ui.csproj" />
-      <ProjectReference Include="..\Jajo.Utils\Jajo.Utils.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Jajo.Ui\Jajo.Ui.csproj" />
+		<ProjectReference Include="..\Jajo.Utils\Jajo.Utils.csproj" />
+	</ItemGroup>
 
-    <ItemGroup>
+	<ItemGroup>
 		<Resource Include="Resources\Icons\Tools32.png" />
 		<Resource Include="Resources\Icons\ToolsExtended32.png" />
-    </ItemGroup>
-	
+	</ItemGroup>
+
 
 	<!--TODO: Update and uncomment this information-->
 	<!--<PropertyGroup>

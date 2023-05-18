@@ -1,13 +1,15 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using Jajo.Exporter.ViewModels.Utils;
+using Application = Jajo.Ui.Common.Application;
 
 namespace Jajo.Exporter.Views;
 
 public partial class MainView
 {
-    readonly IMainViewModel _mainViewModel;
-    
+    private readonly IMainViewModel _mainViewModel;
+
     public MainView(IMainViewModel mainViewModel) : this()
     {
         _mainViewModel = mainViewModel;
@@ -16,10 +18,15 @@ public partial class MainView
         Closing += Window_Closing;
         DataContext = mainViewModel;
 
-        Ui.Common.Application.Current = this;
+        Application.Current = this;
     }
 
-    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    public MainView()
+    {
+        InitializeComponent();
+    }
+
+    private void Window_Closing(object sender, CancelEventArgs e)
     {
         _mainViewModel.OnApplicationClosing();
     }
@@ -33,11 +40,6 @@ public partial class MainView
     private void ShowMessage(string text)
     {
         MessageBox.Show(this, text, "Attention");
-    }
-
-    public MainView()
-    {
-        InitializeComponent();
     }
 
     private void Hide_BTN_Click(object sender, RoutedEventArgs e)

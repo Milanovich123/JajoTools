@@ -22,7 +22,8 @@
     mc:Ignorable="d">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding OnWindowLoadedCommand}" CommandParameter="{Binding ElementName=RootSnackbar}"/>
+            <i:InvokeCommandAction Command="{Binding OnWindowLoadedCommand}"
+                                   CommandParameter="{Binding ElementName=RootSnackbar}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -69,7 +70,7 @@
                                 Click="Hide_BTN_Click"
                                 Padding="3">
                                 <j:DynamicSvg Style="{StaticResource MinimizeSvg}"
-                                              Foreground="{StaticResource MainBlue}"></j:DynamicSvg>
+                                              Foreground="{StaticResource MainBlue}" />
                             </j:Button>
                             <j:Button
                                 Margin="20 0 0 0"
@@ -79,7 +80,7 @@
                                 Background="Transparent"
                                 Padding="3"
                                 Command="{Binding CloseCommand}">
-                                <j:DynamicSvg Style="{StaticResource CloseSvg}"></j:DynamicSvg>
+                                <j:DynamicSvg Style="{StaticResource CloseSvg}" />
                             </j:Button>
                         </StackPanel>
                     </Grid>
@@ -87,10 +88,10 @@
                     <Grid Grid.Row="1">
                         <Grid.Resources>
                             <DataTemplate DataType="{x:Type pagesViewModels:HideTabsViewModel}">
-                                <pages:HideTabsView  DataContext="{Binding}"/>
+                                <pages:HideTabsView DataContext="{Binding}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type pagesViewModels:WerkpakketViewModel}">
-                                <pages:WerkpakketView DataContext="{Binding}"/>
+                                <pages:WerkpakketView DataContext="{Binding}" />
                             </DataTemplate>
                         </Grid.Resources>
 
@@ -146,19 +147,17 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel>
-                                <controls:RadioButton 
+                                <controls:RadioButton
                                     IsChecked="True"
                                     Command="{Binding SetHideTabsViewModelCommand}"
                                     Style="{StaticResource NavRadioButton}"
                                     SvgStyle="{StaticResource HideTabsSvg}"
-                                    Content="Hide Tabs">
-                                </controls:RadioButton>
+                                    Content="Hide Tabs" />
                                 <controls:RadioButton Margin="0,5"
-                                    SvgStyle="{StaticResource WerkpakketSvg}"
-                                    Style="{StaticResource NavRadioButton}"
-                                    Command="{Binding SetWerkpakketViewModelCommand}"
-                                    Content="Werkpakket">
-                                </controls:RadioButton>
+                                                      SvgStyle="{StaticResource WerkpakketSvg}"
+                                                      Style="{StaticResource NavRadioButton}"
+                                                      Command="{Binding SetWerkpakketViewModelCommand}"
+                                                      Content="Werkpakket" />
                             </StackPanel>
                         </Grid>
                     </Border>

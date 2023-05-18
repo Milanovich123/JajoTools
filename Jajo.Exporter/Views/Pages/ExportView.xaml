@@ -75,7 +75,8 @@
                                     VerticalAlignment="Center">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
-                                            <b:InvokeCommandAction Command="{Binding ChangeAllViewSelectionCommand}" CommandParameter="{Binding ElementName=HeaderViewChBox, Path=IsChecked}" />
+                                            <b:InvokeCommandAction Command="{Binding ChangeAllViewSelectionCommand}"
+                                                                   CommandParameter="{Binding ElementName=HeaderViewChBox, Path=IsChecked}" />
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </CheckBox>
@@ -123,7 +124,8 @@
                                                 IsChecked="{Binding IsSelected}">
                                                 <b:Interaction.Triggers>
                                                     <b:EventTrigger EventName="Click">
-                                                        <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
+                                                        <b:InvokeCommandAction
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
                                                     </b:EventTrigger>
                                                 </b:Interaction.Triggers>
 
@@ -166,7 +168,8 @@
                                     VerticalAlignment="Center">
                                     <b:Interaction.Triggers>
                                         <b:EventTrigger EventName="Click">
-                                            <b:InvokeCommandAction Command="{Binding ChangeAllSheetsSelectionCommand}" CommandParameter="{Binding ElementName=HeaderSheetChBox, Path=IsChecked}" />
+                                            <b:InvokeCommandAction Command="{Binding ChangeAllSheetsSelectionCommand}"
+                                                                   CommandParameter="{Binding ElementName=HeaderSheetChBox, Path=IsChecked}" />
                                         </b:EventTrigger>
                                     </b:Interaction.Triggers>
                                 </CheckBox>
@@ -215,7 +218,8 @@
 
                                                 <b:Interaction.Triggers>
                                                     <b:EventTrigger EventName="Click">
-                                                        <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
+                                                        <b:InvokeCommandAction
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
                                                     </b:EventTrigger>
                                                 </b:Interaction.Triggers>
 

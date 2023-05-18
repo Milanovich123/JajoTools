@@ -11,18 +11,21 @@ public partial class WerkpakketViewModel : PageBaseViewModel
     private ObservableCollection<CompanyExample> _companies = new();
     private string _workpackageName;
 
-    public CompanyExample SelectedCompany { get; set; }
-
-    public string WorkpackageName
-    {
-        get => _workpackageName;
-        set => SetProperty(ref _workpackageName, value);
-    }
-
     public WerkpakketViewModel()
     {
         // Insert logic of initial collections
         CreateCompaniesCollection();
+    }
+
+    public CompanyExample SelectedCompany { get; set; }
+
+    /// <summary>
+    /// Name of the custom workpackage
+    /// </summary>
+    public string WorkpackageName
+    {
+        get => _workpackageName;
+        set => SetProperty(ref _workpackageName, value);
     }
 
     // In real project you should change type

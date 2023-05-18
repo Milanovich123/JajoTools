@@ -1,6 +1,8 @@
-﻿using Jajo.Tools.ViewModels.Utils;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using Jajo.Tools.ViewModels.Utils;
+using Application = Jajo.Ui.Common.Application;
 
 namespace Jajo.Tools.Views;
 
@@ -12,14 +14,19 @@ public partial class ToolsView
     {
         _viewModel = viewModel;
         viewModel.ShowMessage += ShowMessage;
-        viewModel.CloseRequested += (_,_) => Close();
+        viewModel.CloseRequested += (_, _) => Close();
         Closing += Window_Closing;
         DataContext = viewModel;
 
-        Ui.Common.Application.Current = this;
+        Application.Current = this;
     }
 
-    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    public ToolsView()
+    {
+        InitializeComponent();
+    }
+
+    private void Window_Closing(object sender, CancelEventArgs e)
     {
         _viewModel.OnApplicationClosing();
     }
@@ -27,11 +34,6 @@ public partial class ToolsView
     private void ShowMessage(string text)
     {
         MessageBox.Show(this, text, "Внимание");
-    }
-
-    public ToolsView()
-    {
-        InitializeComponent();
     }
 
     private void Window_TopPart_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

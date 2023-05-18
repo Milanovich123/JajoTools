@@ -14,18 +14,14 @@ namespace Jajo.Exporter.ViewModels;
 
 public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
 {
-    private readonly NavigationStore _navigationStore;
     private readonly ExportViewModel _exportViewModel;
+    private readonly NavigationStore _navigationStore;
     private readonly SchedulerViewModel _schedulerViewModel;
 
     private ICommand _onWindowLoadedCommand;
-    public ICommand SetExportViewModelCommand { get; }
-    public ICommand SetSchedulerViewModelCommand { get; }
 
-    public Action<string> ShowMessage { get; set; }
-    public event EventHandler CloseRequested = delegate { }; // Invokes when the main window should be closed
-
-    public MainViewModel(NavigationStore navigationStore, ExportViewModel exportViewModel, SchedulerViewModel schedulerViewModel)
+    public MainViewModel(NavigationStore navigationStore, ExportViewModel exportViewModel,
+        SchedulerViewModel schedulerViewModel)
     {
         // To see how navigation works and is implemented step by step
         // https://www.youtube.com/watch?v=N26C_Cq-gAY&list=PLA8ZIAm2I03ggP55JbLOrXl6puKw4rEb2
@@ -49,16 +45,13 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
         SetExportViewModelCommand.Execute(null);
     }
 
+    public ICommand SetExportViewModelCommand { get; }
+    public ICommand SetSchedulerViewModelCommand { get; }
+
     public IViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
-    
-    [RelayCommand]
-    private void Close()
-    {
-        CloseRequested.Invoke(this,EventArgs.Empty);
-    }
 
     // Here you can add code that will be executed before the window is shown
-    public ICommand OnWindowLoadedCommand => _onWindowLoadedCommand ??= new RelayCommand<Snackbar>( snackBar =>
+    public ICommand OnWindowLoadedCommand => _onWindowLoadedCommand ??= new RelayCommand<Snackbar>(snackBar =>
     {
         if (snackBar is null) return;
         var snackBarService = new SnackbarService();
@@ -67,7 +60,16 @@ public sealed partial class MainViewModel : ObservableValidator, IMainViewModel
         _schedulerViewModel.SnackbarService = snackBarService;
     });
 
+    public Action<string> ShowMessage { get; set; }
+    public event EventHandler CloseRequested = delegate { }; // Invokes when the main window should be closed
+
     public void OnApplicationClosing()
     {
+    }
+
+    [RelayCommand]
+    private void Close()
+    {
+        CloseRequested.Invoke(this, EventArgs.Empty);
     }
 }

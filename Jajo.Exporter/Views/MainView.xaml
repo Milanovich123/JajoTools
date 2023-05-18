@@ -22,7 +22,8 @@
     mc:Ignorable="d">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding OnWindowLoadedCommand}" CommandParameter="{Binding ElementName=RootSnackbar}"/>
+            <i:InvokeCommandAction Command="{Binding OnWindowLoadedCommand}"
+                                   CommandParameter="{Binding ElementName=RootSnackbar}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -69,7 +70,7 @@
                                 Click="Hide_BTN_Click"
                                 Padding="3">
                                 <j:DynamicSvg Style="{StaticResource MinimizeSvg}"
-                                              Foreground="{StaticResource MainBlue}"></j:DynamicSvg>
+                                              Foreground="{StaticResource MainBlue}" />
                             </j:Button>
                             <j:Button
                                 Margin="20 0 0 0"
@@ -79,7 +80,7 @@
                                 Background="Transparent"
                                 Padding="3"
                                 Command="{Binding CloseCommand}">
-                                <j:DynamicSvg Style="{StaticResource CloseSvg}"></j:DynamicSvg>
+                                <j:DynamicSvg Style="{StaticResource CloseSvg}" />
                             </j:Button>
                         </StackPanel>
                     </Grid>
@@ -87,10 +88,10 @@
                     <Grid Grid.Row="1">
                         <Grid.Resources>
                             <DataTemplate DataType="{x:Type pagesViewModels:ExportViewModel}">
-                                <pages:ExportView  DataContext="{Binding}"/>
+                                <pages:ExportView DataContext="{Binding}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type pagesViewModels:SchedulerViewModel}">
-                                <pages:SchedulerView DataContext="{Binding}"/>
+                                <pages:SchedulerView DataContext="{Binding}" />
                             </DataTemplate>
                         </Grid.Resources>
 
@@ -146,19 +147,17 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel>
-                                <controls:RadioButton 
+                                <controls:RadioButton
                                     IsChecked="True"
                                     Command="{Binding SetExportViewModelCommand}"
                                     Style="{StaticResource NavRadioButton}"
                                     SvgStyle="{StaticResource ExportSvg}"
-                                    Content="Export">
-                                </controls:RadioButton>
+                                    Content="Export" />
                                 <controls:RadioButton Margin="0,5"
-                                    SvgStyle="{StaticResource ScheduleSvg}"
-                                    Style="{StaticResource NavRadioButton}"
-                                    Command="{Binding SetSchedulerViewModelCommand}"
-                                    Content="Scheduler">
-                                </controls:RadioButton>
+                                                      SvgStyle="{StaticResource ScheduleSvg}"
+                                                      Style="{StaticResource NavRadioButton}"
+                                                      Command="{Binding SetSchedulerViewModelCommand}"
+                                                      Content="Scheduler" />
                             </StackPanel>
                         </Grid>
                     </Border>

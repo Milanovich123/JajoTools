@@ -7,22 +7,22 @@ namespace Jajo.Exporter.ViewModels.Pages;
 
 public abstract partial class PageBaseViewModel : ObservableObject
 {
-    private ObservableCollection<ViewExample> _exportViews = new ();
-    private ObservableCollection<SheetExample> _exportSheets = new ();
+    private ObservableCollection<SheetExample> _exportSheets = new();
+    private ObservableCollection<ViewExample> _exportViews = new();
     private bool _isExportToDwgSelected;
-    private bool _switchPhaseBoolValue;
-    private ICollection<ViewExample> _selectedViews;
-    private ICollection<SheetExample> _selectedSheets;
     private bool _isMainButtonAvailable;
+    private ICollection<SheetExample> _selectedSheets;
+    private ICollection<ViewExample> _selectedViews;
+    private bool _switchPhaseBoolValue;
 
     protected PageBaseViewModel()
     {
         // Insert logic of initial collections
         PhaseSwitched();
     }
-    
+
     // In real project you should change type
-	public ObservableCollection<ViewExample> ExportViews
+    public ObservableCollection<ViewExample> ExportViews
     {
         get => _exportViews;
         private set => SetProperty(ref _exportViews, value);
@@ -82,17 +82,13 @@ public abstract partial class PageBaseViewModel : ObservableObject
         SelectedSheets = ExportSheets.Where(i => i.IsSelected).ToList();
 
         if (SelectedSheets.Count > 0 || SelectedViews.Count > 0)
-        {
             IsMainButtonAvailable = true;
-        }
         else
-        {
             IsMainButtonAvailable = false;
-        }
     }
 
     /// <summary>
-    /// Happens when phase switcher changed it's value
+    ///     Happens when phase switcher changed it's value
     /// </summary>
     [RelayCommand]
     private void PhaseSwitched()
@@ -102,18 +98,18 @@ public abstract partial class PageBaseViewModel : ObservableObject
             // Insert there logic of finding TO/UO stage files
             ExportViews = new ObservableCollection<ViewExample>
             {
-                new() {Name="(TO/UO) first view"},
-                new() {Name="(TO/UO) second view"},
-                new() {Name="(TO/UO) third view"},
+                new() { Name = "(TO/UO) first view" },
+                new() { Name = "(TO/UO) second view" },
+                new() { Name = "(TO/UO) third view" }
             };
 
             ExportSheets = new ObservableCollection<SheetExample>
             {
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(TO/UO) 1234-TL - Tekeningenlijst"}
+                new() { Name = "(TO/UO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(TO/UO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(TO/UO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(TO/UO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(TO/UO) 1234-TL - Tekeningenlijst" }
             };
         }
         else
@@ -121,18 +117,18 @@ public abstract partial class PageBaseViewModel : ObservableObject
             // Insert there logic of finding VO/DO stage files
             ExportViews = new ObservableCollection<ViewExample>
             {
-                new() {Name="(VO/DO) first view"},
-                new() {Name="(VO/DO) second view"},
-                new() {Name="(VO/DO) third view"},
+                new() { Name = "(VO/DO) first view" },
+                new() { Name = "(VO/DO) second view" },
+                new() { Name = "(VO/DO) third view" }
             };
 
             ExportSheets = new ObservableCollection<SheetExample>
             {
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"},
-                new() {Name = "(VO/DO) 1234-TL - Tekeningenlijst"}
+                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
+                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" }
             };
         }
 
@@ -144,30 +140,24 @@ public abstract partial class PageBaseViewModel : ObservableObject
     {
         if (o is not bool boolValue) return;
 
-        foreach (var view in ExportViews)
-        {
-            view.IsSelected = boolValue;
-        }
+        foreach (var view in ExportViews) view.IsSelected = boolValue;
 
         UpdateChBoxesState();
     }
-    
+
     [RelayCommand]
     private void ChangeAllSheetsSelection(object o)
     {
         if (o is not bool boolValue) return;
 
-        foreach (var sheet in ExportSheets)
-        {
-            sheet.IsSelected = boolValue;
-        }
+        foreach (var sheet in ExportSheets) sheet.IsSelected = boolValue;
 
         UpdateChBoxesState();
     }
 }
 
 /// <summary>
-/// Example class of a view
+///     Example class of a view
 /// </summary>
 public class ViewExample : ObservableObject
 {
@@ -183,7 +173,7 @@ public class ViewExample : ObservableObject
 }
 
 /// <summary>
-/// Example class of a sheet
+///     Example class of a sheet
 /// </summary>
 public class SheetExample : ObservableObject
 {

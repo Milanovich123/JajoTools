@@ -9,7 +9,7 @@ public class ExportViewModel : PageBaseViewModel, IViewModelBase
     public SnackbarService SnackbarService { get; set; }
 
     /// <summary>
-    /// Override method from abstract class
+    ///     Override method from abstract class
     /// </summary>
     protected override void Export()
     {
@@ -17,13 +17,10 @@ public class ExportViewModel : PageBaseViewModel, IViewModelBase
 
         // Just an example how to use a snackbar
         if (IsExportToDwgSelected)
-        {
-            SnackbarService.Show("Submit button clicked!", ControlAppearance.Success);
-        }
+            SnackbarService.Show("Operation failed!", ControlAppearance.Failure);
+
         // logic when the dwg export check box was not selected
         else
-        {
-            SnackbarService.Show("Operation failed!", ControlAppearance.Failure);
-        }
+            SnackbarService.Show("Submit button clicked!", ControlAppearance.Success);
     }
 }

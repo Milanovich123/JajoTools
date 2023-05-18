@@ -21,6 +21,7 @@ public static class VisualTreeUtils
         }
     }
 
+    [UsedImplicitly]
     public static T FindVisualParent<T>(DependencyObject dependencyObject) where T : DependencyObject
     {
         if (dependencyObject is null) return null;

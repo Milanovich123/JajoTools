@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 namespace Jajo.Exporter.Services;
 
 /// <summary>
-/// This class is used to determine what should be done 
+///     This class is used to determine what should be done
 /// </summary>
 public class ApplicationHostService : IHostedService
 {
@@ -15,7 +15,7 @@ public class ApplicationHostService : IHostedService
     {
         _serviceProvider = serviceProvider;
     }
-    
+
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         if (_serviceProvider.GetService(typeof(MainView)) is Window mainView) mainView.Show();
