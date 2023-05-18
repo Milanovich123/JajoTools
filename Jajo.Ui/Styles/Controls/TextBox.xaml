@@ -50,8 +50,7 @@
         <!--  Universal WPF UI focus  -->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource DefaultControlFocusVisualStyle}" />
         <!--  Universal WPF UI focus  -->
-        <!--  Universal WPF UI ContextMenu  -->
-        <Setter Property="ContextMenu" Value="{StaticResource White}" />
+        
         <!--  Universal WPF UI ContextMenu  -->
         <Setter Property="Foreground">
             <Setter.Value>

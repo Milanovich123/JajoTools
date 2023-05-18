@@ -60,7 +60,8 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
     <ItemGroup>
-      <None Remove="Resources\Icons\ToolsIcon16.png" />
+      <None Remove="Resources\Icons\Tools32.png" />
+      <None Remove="Resources\Icons\ToolsExtended32.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -82,9 +83,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Resource Include="Resources\Icons\ToolsIcon16.png" />
-      <Resource Include="Resources\Icons\ToolsIcon32.png">
-      </Resource>
+		<Resource Include="Resources\Icons\Tools32.png" />
+		<Resource Include="Resources\Icons\ToolsExtended32.png" />
     </ItemGroup>
 	
 

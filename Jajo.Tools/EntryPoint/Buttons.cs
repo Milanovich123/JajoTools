@@ -8,8 +8,7 @@ public static class Buttons
     {
         var showButton = panel.AddPushButton<ToolsCommand>("Tools");
         
-        showButton.SetImage("/Jajo.Tools;component/Resources/Icons/ToolsIcon16.png");
-        showButton.SetLargeImage("/Jajo.Tools;component/Resources/Icons/ToolsIcon32.png");
+        showButton.SetLargeImage("/Jajo.Tools;component/Resources/Icons/ToolsExtended32.png");
         showButton.ToolTip = "Jajo Tools";
         showButton.LongDescription = "This application is used to...";
     }
