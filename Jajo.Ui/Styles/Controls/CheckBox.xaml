@@ -143,7 +143,8 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <Setter TargetName="ControlBorderIconPresenter" Property="Background" Value="{StaticResource BluePressedColor}" />
+                            <Setter TargetName="ControlBorderIconPresenter" Property="Background"
+                                    Value="{StaticResource BluePressedColor}" />
                             <MultiTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -159,8 +160,10 @@
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>
                         <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="ControlBorderIconPresenter" Property="Background" Value="{StaticResource White}" />
-                            <Setter TargetName="ControlBorderIconPresenter" Property="BorderThickness" Value="{StaticResource CheckBoxBorderThemeThicknessFalse}" />
+                            <Setter TargetName="ControlBorderIconPresenter" Property="Background"
+                                    Value="{StaticResource White}" />
+                            <Setter TargetName="ControlBorderIconPresenter" Property="BorderThickness"
+                                    Value="{StaticResource CheckBoxBorderThemeThicknessFalse}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -216,9 +219,12 @@
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ControlBorderIconPresenter" Property="Background" Value="{StaticResource MainGray}" />
-                            <Setter TargetName="ControlBorderIconPresenter" Property="BorderBrush" Value="{StaticResource BluePressedColor}" />
-                            <Setter TargetName="ControlIcon" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+                            <Setter TargetName="ControlBorderIconPresenter" Property="Background"
+                                    Value="{StaticResource MainGray}" />
+                            <Setter TargetName="ControlBorderIconPresenter" Property="BorderBrush"
+                                    Value="{StaticResource BluePressedColor}" />
+                            <Setter TargetName="ControlIcon" Property="Foreground"
+                                    Value="{DynamicResource TextFillColorDisabledBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -230,4 +236,3 @@
     <Style BasedOn="{StaticResource EnecaCheckBoxStyle}" TargetType="{x:Type CheckBox}" />
 
 </ResourceDictionary>
-

@@ -20,7 +20,7 @@ public partial class WerkpakketViewModel : PageBaseViewModel
     public CompanyExample SelectedCompany { get; set; }
 
     /// <summary>
-    /// Name of the custom workpackage
+    ///     Name of the custom workpackage
     /// </summary>
     public string WorkpackageName
     {

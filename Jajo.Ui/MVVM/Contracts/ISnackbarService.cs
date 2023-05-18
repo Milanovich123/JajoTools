@@ -9,41 +9,43 @@ using Jajo.Ui.Controls.Interfaces;
 namespace Jajo.Ui.MVVM.Contracts;
 
 /// <summary>
-/// Represents a contract with the service that provides global <see cref="ISnackbarControl"/>.
+///     Represents a contract with the service that provides global <see cref="ISnackbarControl" />.
 /// </summary>
 public interface ISnackbarService
 {
     /// <summary>
-    /// Gets the information whether the <see cref="ISnackbarControl"/> is visible.
+    ///     Gets the information whether the <see cref="ISnackbarControl" /> is visible.
     /// </summary>
     bool IsShown { get; }
 
     /// <summary>
-    /// Gets or sets a time for which the <see cref="ISnackbarControl"/> should be visible.
+    ///     Gets or sets a time for which the <see cref="ISnackbarControl" /> should be visible.
     /// </summary>
     int Timeout { get; set; }
 
     /// <summary>
-    /// Sets the <see cref="ISnackbarControl"/> used in the service. Typically this control is defined in the main window.
+    ///     Sets the <see cref="ISnackbarControl" /> used in the service. Typically this control is defined in the main window.
     /// </summary>
     void SetSnackbarControl(ISnackbarControl snackbar);
 
     /// <summary>
-    /// Gets the <see cref="ISnackbarControl"/> used in the service.
+    ///     Gets the <see cref="ISnackbarControl" /> used in the service.
     /// </summary>
     ISnackbarControl GetSnackbarControl();
 
     /// <summary>
-    /// Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it
+    ///     again.
     /// </summary>
-    /// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
+    /// <returns><see langword="true" /> if invocation of <see langword="async" /> method succeeded, Exception otherwise.</returns>
     bool Show();
 
     /// <summary>
-    /// Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it
+    ///     again.
     /// </summary>
-    /// <param name="title"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
+    /// <param name="title"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <returns><see langword="true" /> if invocation of <see langword="async" /> method succeeded, Exception otherwise.</returns>
     bool Show(string title);
 
     ///// <summary>
@@ -55,19 +57,21 @@ public interface ISnackbarService
     //bool Show(string title, string message);
 
     /// <summary>
-    /// Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it
+    ///     again.
     /// </summary>
-    /// <param name="message"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <param name="appearance"><see cref="IAppearanceControl.Appearance"/> of the snackbar.</param>
-    /// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
+    /// <param name="message"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <param name="appearance"><see cref="IAppearanceControl.Appearance" /> of the snackbar.</param>
+    /// <returns><see langword="true" /> if invocation of <see langword="async" /> method succeeded, Exception otherwise.</returns>
     bool Show(string message, ControlAppearance appearance);
 
     /// <summary>
-    /// Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it
+    ///     again.
     /// </summary>
-    /// <param name="title"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <param name="message"><see cref="ISnackbarControl.Message"/> in the content of the snackbar.</param>
-    /// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
+    /// <param name="title"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <param name="message"><see cref="ISnackbarControl.Message" /> in the content of the snackbar.</param>
+    /// <returns><see langword="true" /> if invocation of <see langword="async" /> method succeeded, Exception otherwise.</returns>
     bool Show(string title, string message);
 
 
@@ -80,25 +84,28 @@ public interface ISnackbarService
     ///// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
     //bool Show(string title, string message, ControlAppearance appearance);
     /// <summary>
-    /// Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it
+    ///     again.
     /// </summary>
-    /// <param name="title"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <param name="message"><see cref="ISnackbarControl.Message"/> in the content of the snackbar.</param>
-    /// <param name="appearance"><see cref="IAppearanceControl.Appearance"/> of the snackbar.</param>
-    /// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
+    /// <param name="title"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <param name="message"><see cref="ISnackbarControl.Message" /> in the content of the snackbar.</param>
+    /// <param name="appearance"><see cref="IAppearanceControl.Appearance" /> of the snackbar.</param>
+    /// <returns><see langword="true" /> if invocation of <see langword="async" /> method succeeded, Exception otherwise.</returns>
     bool Show(string title, string message, ControlAppearance appearance);
 
     /// <summary>
-    /// Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content,
+    ///     and then shows it again.
     /// </summary>
-    /// <returns><see langword="true"/> if the operation was successful.</returns>
+    /// <returns><see langword="true" /> if the operation was successful.</returns>
     Task<bool> ShowAsync();
 
     /// <summary>
-    /// Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content,
+    ///     and then shows it again.
     /// </summary>
-    /// <param name="title"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <returns><see langword="true"/> if the operation was successful.</returns>
+    /// <param name="title"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <returns><see langword="true" /> if the operation was successful.</returns>
     Task<bool> ShowAsync(string title);
 
     ///// <summary>
@@ -110,19 +117,21 @@ public interface ISnackbarService
     //Task<bool> ShowAsync(string title, string message);
 
     /// <summary>
-    /// Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content,
+    ///     and then shows it again.
     /// </summary>
-    /// <param name="message"><see cref="ISnackbarControl.Message"/> at the top of the snackbar.</param>
-    /// <param name="appearance"><see cref="IAppearanceControl.Appearance"/> of the snackbar.</param>
-    /// <returns><see langword="true"/> if the operation was successful.</returns>
+    /// <param name="message"><see cref="ISnackbarControl.Message" /> at the top of the snackbar.</param>
+    /// <param name="appearance"><see cref="IAppearanceControl.Appearance" /> of the snackbar.</param>
+    /// <returns><see langword="true" /> if the operation was successful.</returns>
     Task<bool> ShowAsync(string message, ControlAppearance appearance);
 
     /// <summary>
-    /// Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content,
+    ///     and then shows it again.
     /// </summary>
-    /// <param name="title"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <param name="message"><see cref="ISnackbarControl.Message"/> in the content of the snackbar.</param>
-    /// <returns><see langword="true"/> if the operation was successful.</returns>
+    /// <param name="title"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <param name="message"><see cref="ISnackbarControl.Message" /> in the content of the snackbar.</param>
+    /// <returns><see langword="true" /> if the operation was successful.</returns>
     Task<bool> ShowAsync(string title, string message);
 
 
@@ -135,22 +144,24 @@ public interface ISnackbarService
     ///// <returns><see langword="true"/> if the operation was successful.</returns>
     //Task<bool> ShowAsync(string title, string message, ControlAppearance appearance);
     /// <summary>
-    /// Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content, and then shows it again.
+    ///     Asynchronously shows the snackbar. If it is already visible, firstly hides it for a moment, changes its content,
+    ///     and then shows it again.
     /// </summary>
-    /// <param name="title"><see cref="ISnackbarControl.Title"/> at the top of the snackbar.</param>
-    /// <param name="message"><see cref="ISnackbarControl.Message"/> in the content of the snackbar.</param>
-    /// <param name="appearance"><see cref="IAppearanceControl.Appearance"/> of the snackbar.</param>
-    /// <returns><see langword="true"/> if the operation was successful.</returns>
-    Task<bool> ShowAsync(string title, string message,ControlAppearance appearance);
+    /// <param name="title"><see cref="ISnackbarControl.Title" /> at the top of the snackbar.</param>
+    /// <param name="message"><see cref="ISnackbarControl.Message" /> in the content of the snackbar.</param>
+    /// <param name="appearance"><see cref="IAppearanceControl.Appearance" /> of the snackbar.</param>
+    /// <returns><see langword="true" /> if the operation was successful.</returns>
+    Task<bool> ShowAsync(string title, string message, ControlAppearance appearance);
 
     /// <summary>
-    /// Hides the snackbar based on the selected animation, if control is visible.
+    ///     Hides the snackbar based on the selected animation, if control is visible.
     /// </summary>
-    /// <returns><see langword="true"/> if invocation of <see langword="async"/> method succeeded, Exception otherwise.</returns>
+    /// <returns><see langword="true" /> if invocation of <see langword="async" /> method succeeded, Exception otherwise.</returns>
     bool Hide();
+
     /// <summary>
-    /// Asynchronously hides the snackbar based on the selected animation, if control is visible.
+    ///     Asynchronously hides the snackbar based on the selected animation, if control is visible.
     /// </summary>
-    /// <returns><see langword="true"/> if the operation was successful.</returns>
+    /// <returns><see langword="true" /> if the operation was successful.</returns>
     Task<bool> HideAsync();
 }

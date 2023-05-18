@@ -82,7 +82,7 @@
                                 </CheckBox>
                             </Border>
                             <TextBlock
-                                Margin="7,0,0,0"
+                                Margin="7,0,0,-3"
                                 VerticalAlignment="Center"
                                 Foreground="{StaticResource StringGray}"
                                 Style="{StaticResource AeonikPro13R}"
@@ -90,56 +90,69 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <Border
-                        Width="320"
-                        Height="300"
-                        HorizontalAlignment="Left"
-                        Background="White"
-                        CornerRadius="0 7 7 7">
-                        <ScrollViewer
+                    <Grid>
+                        <Border x:Name="AccentBorder" Width="320"
+                                Height="300"
+                                HorizontalAlignment="Left"
+                                Background="White"
+                                BorderThickness="0,0,0,2"
+                                CornerRadius="0 7 7 7">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource StringGrayColor}" Opacity="0.3" />
+                            </Border.BorderBrush>
+                        </Border>
+
+                        <Border
                             Width="320"
                             Height="300"
                             HorizontalAlignment="Left"
-                            HorizontalScrollBarVisibility="Disabled"
-                            VerticalScrollBarVisibility="Visible">
-                            <ScrollViewer.Background>
-                                <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
-                            </ScrollViewer.Background>
+                            Background="Transparent"
+                            CornerRadius="0 7 7 7">
+                            <ScrollViewer
+                                Width="320"
+                                Height="300"
+                                HorizontalAlignment="Left"
+                                HorizontalScrollBarVisibility="Disabled"
+                                VerticalScrollBarVisibility="Visible">
+                                <ScrollViewer.Background>
+                                    <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
+                                </ScrollViewer.Background>
 
-                            <ItemsControl
-                                x:Name="ViewsCollection"
-                                Margin="0,0"
-                                Padding="10,10"
-                                ItemsSource="{Binding ExportViews}"
-                                ScrollViewer.CanContentScroll="True"
-                                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ItemsControl
+                                    x:Name="ViewsCollection"
+                                    Margin="0,0"
+                                    Padding="10,10"
+                                    ItemsSource="{Binding ExportViews}"
+                                    ScrollViewer.CanContentScroll="True"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto">
 
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <CheckBox
-                                                x:Name="PluginNotificationChBox"
-                                                Margin="4,0,0,0"
-                                                FontFamily="{StaticResource Montserrat}"
-                                                IsChecked="{Binding IsSelected}">
-                                                <b:Interaction.Triggers>
-                                                    <b:EventTrigger EventName="Click">
-                                                        <b:InvokeCommandAction
-                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
-                                                    </b:EventTrigger>
-                                                </b:Interaction.Triggers>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0 0 0 5">
+                                                <CheckBox
+                                                    x:Name="PluginNotificationChBox"
+                                                    Margin="4,0,0,0"
+                                                    FontFamily="{StaticResource Montserrat}"
+                                                    IsChecked="{Binding IsSelected}">
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="Click">
+                                                            <b:InvokeCommandAction
+                                                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
 
-                                                <TextBlock
-                                                    Margin="6,0"
-                                                    Style="{StaticResource AeonikPro16R}"
-                                                    Text="{Binding Path=Name}" />
-                                            </CheckBox>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </ScrollViewer>
-                    </Border>
+                                                    <TextBlock
+                                                        Margin="0 -2 0 0"
+                                                        Style="{StaticResource AeonikPro16R}"
+                                                        Text="{Binding Path=Name}" />
+                                                </CheckBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
                 </StackPanel>
             </Grid>
 
@@ -183,66 +196,74 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <Border
-                        Width="320"
-                        Height="300"
-                        HorizontalAlignment="Left"
-                        Background="White"
-                        CornerRadius="0 7 7 7">
-                        <ScrollViewer
+                    <Grid>
+                        <Border x:Name="AccentBorder1" Width="320"
+                                Height="300"
+                                HorizontalAlignment="Left"
+                                Background="White"
+                                BorderThickness="0,0,0,2"
+                                CornerRadius="0 7 7 7">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource StringGrayColor}" Opacity="0.3" />
+                            </Border.BorderBrush>
+                        </Border>
+
+                        <Border
                             Width="320"
                             Height="300"
                             HorizontalAlignment="Left"
-                            HorizontalScrollBarVisibility="Disabled"
-                            VerticalScrollBarVisibility="Visible">
-                            <ScrollViewer.Background>
-                                <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
-                            </ScrollViewer.Background>
+                            Background="Transparent"
+                            CornerRadius="0 7 7 7">
+                            <ScrollViewer
+                                Width="320"
+                                Height="300"
+                                HorizontalAlignment="Left"
+                                HorizontalScrollBarVisibility="Disabled"
+                                VerticalScrollBarVisibility="Visible">
+                                <ScrollViewer.Background>
+                                    <SolidColorBrush Opacity="0.15" Color="{StaticResource BlackColor}" />
+                                </ScrollViewer.Background>
 
-                            <ItemsControl
-                                x:Name="ShetsCollection"
-                                Margin="0,0"
-                                Padding="10,10"
-                                ItemsSource="{Binding ExportSheets}"
-                                ScrollViewer.CanContentScroll="True"
-                                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ItemsControl
+                                    x:Name="ShetsCollection"
+                                    Margin="0,0"
+                                    Padding="10,10"
+                                    ItemsSource="{Binding ExportSheets}"
+                                    ScrollViewer.CanContentScroll="True"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto">
 
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <CheckBox
-                                                x:Name="PluginNotificationChBox"
-                                                Margin="4,0,0,0"
-                                                FontFamily="{StaticResource Montserrat}"
-                                                IsChecked="{Binding IsSelected}">
-                                                <!--
-                                                    IsChecked="{Binding IsNotifiable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                    IsEnabled="{Binding ElementName=NotificationForCertainPluginsChBox, Path=IsChecked}"
-                                                    Style="{StaticResource InstallationManagerCheckBoxStyle}">
-                                                -->
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0 0 0 5">
+                                                <CheckBox
+                                                    x:Name="PluginNotificationChBox"
+                                                    Margin="4,0,0,0"
+                                                    FontFamily="{StaticResource Montserrat}"
+                                                    IsChecked="{Binding IsSelected}">
 
-                                                <b:Interaction.Triggers>
-                                                    <b:EventTrigger EventName="Click">
-                                                        <b:InvokeCommandAction
-                                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
-                                                    </b:EventTrigger>
-                                                </b:Interaction.Triggers>
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="Click">
+                                                            <b:InvokeCommandAction
+                                                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.UpdateChBoxesStateCommand}" />
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
 
-                                                <TextBlock
-                                                    Margin="6,0"
-                                                    Style="{StaticResource AeonikPro16R}"
-                                                    Text="{Binding Path=Name}" />
-                                            </CheckBox>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </ScrollViewer>
-
-                    </Border>
+                                                    <TextBlock
+                                                        Margin="0 -2 0 0"
+                                                        Style="{StaticResource AeonikPro16R}"
+                                                        Text="{Binding Path=Name}" />
+                                                </CheckBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
 
                     <CheckBox Margin="10,23,0,0" IsChecked="{Binding IsExportToDwgSelected}">
-                        <TextBlock Style="{StaticResource AeonikPro16R}" Text="Export sheets as DWG also" />
+                        <TextBlock Style="{StaticResource AeonikPro16R}" Text="Export sheets as DWG also"
+                                   Margin="0 0 0 0" />
                     </CheckBox>
                 </StackPanel>
             </Grid>

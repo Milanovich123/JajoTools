@@ -23,7 +23,7 @@
 
 
     <Style x:Key="UiScrollBarLineButton" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Foreground" Value="{StaticResource DarkBlue}" />
+        <Setter Property="Foreground" Value="{StaticResource LightBlue}" />
         <Setter Property="Width" Value="{StaticResource LineButtonWidth}" />
         <Setter Property="Height" Value="{StaticResource LineButtonHeight}" />
         <Setter Property="Margin" Value="0" />
@@ -108,8 +108,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border
-                        Background="{StaticResource DarkBlue}"
-                        BorderBrush="{StaticResource DarkBlue}"
+                        Background="{StaticResource LightBlue}"
+                        BorderBrush="{StaticResource LightBlue}"
                         BorderThickness="1"
                         CornerRadius="{TemplateBinding Border.CornerRadius}" />
                 </ControlTemplate>
@@ -172,6 +172,7 @@
         <ControlTemplate.Triggers>
             <Trigger Property="Foreground" Value="Blue" />
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>

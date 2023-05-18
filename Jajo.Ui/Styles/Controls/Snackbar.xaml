@@ -127,7 +127,8 @@
                                     Command="{Binding Path=TemplateButtonCommand, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
                                     CommandParameter="close"
                                     Foreground="{TemplateBinding Foreground}">
-                                    <controls:DynamicSvg Foreground="{StaticResource Black}" Style="{StaticResource CloseSvg}" />
+                                    <controls:DynamicSvg Foreground="{StaticResource Black}"
+                                                         Style="{StaticResource CloseSvg}" />
                                 </controls:Button>
                             </Grid>
                         </Border>
@@ -185,7 +186,8 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167" Value="{x:Static Visibility.Collapsed}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167"
+                                                                    Value="{x:Static Visibility.Collapsed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -194,7 +196,8 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167" Value="{x:Static Visibility.Visible}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.167"
+                                                                    Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -208,7 +211,8 @@
             <Trigger Property="Appearance" Value="Success">
                 <Setter Property="DynamicSvg">
                     <Setter.Value>
-                        <controls:DynamicSvg Foreground="{StaticResource MainGreen}" Style="{StaticResource SuccessSvg}" />
+                        <controls:DynamicSvg Foreground="{StaticResource MainGreen}"
+                                             Style="{StaticResource SuccessSvg}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Foreground">

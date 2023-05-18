@@ -34,7 +34,7 @@
                                Margin="7 0 0 0"
                                Style="{StaticResource AeonikPro13R}">
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource DarkBlueColor}" Opacity="0.7"></SolidColorBrush>
+                            <SolidColorBrush Color="{StaticResource DarkBlueColor}" Opacity="0.7" />
                         </TextBlock.Foreground>
                     </TextBlock>
                 </StackPanel>

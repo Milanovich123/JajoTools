@@ -6,12 +6,12 @@
 namespace Jajo.Ui.Common;
 
 /// <summary>
-/// Types of the available color accents of the controls.
+///     Types of the available color accents of the controls.
 /// </summary>
 public enum ControlAppearance
 {
     /// <summary>
-    /// Control color according to the current theme accent.
+    ///     Control color according to the current theme accent.
     /// </summary>
     JajoPrimary,
     JajoSvgPrimary,

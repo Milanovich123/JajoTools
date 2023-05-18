@@ -5,8 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Jajo.Ui.Controls.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:system="clr-namespace:System;assembly=mscorlib"
-    xmlns:userControls="clr-namespace:Jajo.Ui.Controls.UserControls"
     Width="100"
     Height="25"
     d:DesignHeight="25"
@@ -19,12 +17,8 @@
                 <ResourceDictionary Source="pack://application:,,,/Jajo.Ui;component/Jajo.Ui.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <system:Double x:Key="RadioButtonBorderThemeThickness">1</system:Double>
-            <system:Double x:Key="ToggleButtonWidth">40</system:Double>
-            <system:Double x:Key="ToggleButtonHeight">20</system:Double>
             <Thickness x:Key="ToggleSwitchPadding">8,6,0,0</Thickness>
             <Thickness x:Key="ToggleSwitchBorderThemeThickness">1</Thickness>
-            <Thickness x:Key="ToggleSwitchContentMargin">8,0,0,0</Thickness>
 
 
             <Style TargetType="{x:Type local:Switcher}">
@@ -54,82 +48,6 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:Switcher}">
                             <ComboBox />
-                            <!--<Grid Background="Transparent">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid
-                                    Grid.Column="0"
-                                    Width="{TemplateBinding Width}"
-                                    Height="{TemplateBinding Height}">
-                                    <Rectangle
-                                        x:Name="ToggleRectangle"
-                                        Width="{TemplateBinding Width}"
-                                        Height="{TemplateBinding Height}"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        RadiusX="10"
-                                        RadiusY="10"
-                                        Stroke="Transparent"
-                                        StrokeThickness="1">
-                                        <Rectangle.Fill>
-                                            <SolidColorBrush Color="Yellow" />
-                                        </Rectangle.Fill>
-                                    </Rectangle>
-                                    <Rectangle
-                                        x:Name="ActiveToggleRectangle"
-                                        Width="{StaticResource ToggleButtonWidth}"
-                                        Height="{StaticResource ToggleButtonHeight}"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Fill="{TemplateBinding Background}"
-                                        Opacity="0.0"
-                                        RadiusX="10"
-                                        RadiusY="10"
-                                        StrokeThickness="0" />
-                                    <Ellipse
-                                        x:Name="ToggleEllipse"
-                                        Width="12"
-                                        Height="12"
-                                        Margin="0"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        RenderTransformOrigin="0.5, 0.5">
-                                        <Ellipse.RenderTransform>
-                                            <TranslateTransform X="-9" />
-                                        </Ellipse.RenderTransform>
-                                        <Ellipse.Fill>
-                                            <SolidColorBrush Color="{StaticResource MainGrayColor}" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                    <Ellipse
-                                        x:Name="ActiveToggleEllipse"
-                                        Width="12"
-                                        Height="12"
-                                        Margin="0"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Opacity="0.0"
-                                        RenderTransformOrigin="0.5, 0.5">
-                                        <Ellipse.RenderTransform>
-                                            <TranslateTransform X="-9" />
-                                        </Ellipse.RenderTransform>
-                                        <Ellipse.Fill>
-                                            <SolidColorBrush Color="{StaticResource MainBlueColor}" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                </Grid>
-
-                                <ContentPresenter
-                                    x:Name="ContentPresenter"
-                                    Grid.Column="1"
-                                    Margin="{StaticResource ToggleSwitchContentMargin}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Content="{TemplateBinding Content}"
-                                    TextElement.Foreground="{TemplateBinding Foreground}" />
-                            </Grid>-->
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -171,8 +89,8 @@
                     <Rectangle
                         x:Name="ToggleRectangle"
                         Width="48"
-                        Height="20"
-                        Margin="3,0,0,0"
+                        Height="21"
+                        Margin="2,0,0,0"
                         HorizontalAlignment="Left"
                         Fill="{StaticResource LightBlue}"
                         RadiusX="10"
@@ -193,18 +111,18 @@
                 <TextBlock
                     x:Name="FirstTextElement"
                     Grid.Column="0"
-                    Margin="5,2,0,0"
+                    Margin="3,0,0,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="12"
-                    Foreground="{StaticResource Black}"
+                    Foreground="{StaticResource White}"
                     Style="{StaticResource AeonikPro13R}"
                     Text="VO/DO" />
 
                 <TextBlock
                     x:Name="SecondTextElement"
                     Grid.Column="1"
-                    Margin="0,2,5,0"
+                    Margin="0,0,3,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="12"
@@ -222,7 +140,7 @@
                                     Storyboard.TargetName="ToggleRectangle"
                                     Storyboard.TargetProperty="(Rectangle.RenderTransform).(TranslateTransform.X)"
                                     From="0"
-                                    To="47"
+                                    To="48"
                                     Duration="00:00:00.167" />
                                 <ColorAnimation
                                     Storyboard.TargetName="FirstTextElement"
@@ -245,7 +163,7 @@
                                 <DoubleAnimation
                                     Storyboard.TargetName="ToggleRectangle"
                                     Storyboard.TargetProperty="(Rectangle.RenderTransform).(TranslateTransform.X)"
-                                    From="47"
+                                    From="48"
                                     To="0"
                                     Duration="00:00:00.167" />
                                 <ColorAnimation
@@ -270,12 +188,6 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <!--<ColorAnimation
-                                    Storyboard.TargetName="MainRectangle"
-                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
-                                    From="{StaticResource WhiteBackgroundColor}"
-                                    To="{StaticResource MainGrayColor}"
-                                    Duration="00:00:00.167" />-->
                                 <ColorAnimation
                                     Storyboard.TargetName="ToggleRectangle"
                                     Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
@@ -288,12 +200,6 @@
                     <Trigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <!--<ColorAnimation
-                                    Storyboard.TargetName="MainRectangle"
-                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
-                                    From="{StaticResource MainGrayColor}"
-                                    To="{StaticResource WhiteBackgroundColor}"
-                                    Duration="00:00:00.167" />-->
                                 <ColorAnimation
                                     Storyboard.TargetName="ToggleRectangle"
                                     Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"

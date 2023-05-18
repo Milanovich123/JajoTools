@@ -50,7 +50,7 @@
         <!--  Universal WPF UI focus  -->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource DefaultControlFocusVisualStyle}" />
         <!--  Universal WPF UI focus  -->
-        
+
         <!--  Universal WPF UI ContextMenu  -->
         <Setter Property="Foreground">
             <Setter.Value>
@@ -89,7 +89,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TextBox}">
-                    <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalAlignment}">
                         <Border
                             x:Name="ContentBorder"
                             Width="{TemplateBinding Width}"
@@ -103,7 +104,8 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding Border.CornerRadius}">
-                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
@@ -227,7 +229,8 @@
                                     <SolidColorBrush Opacity="1" Color="{StaticResource StringGrayColor}" />
                                 </Setter.Value>
                             </Setter>
-                            <Setter TargetName="PlaceholderTextBox" Property="Foreground" Value="{StaticResource StringGrayColor}" />
+                            <Setter TargetName="PlaceholderTextBox" Property="Foreground"
+                                    Value="{StaticResource StringGrayColor}" />
                             <Setter Property="Foreground" Value="{StaticResource StringGrayColor}" />
                             <Setter Property="ClearButtonEnabled" Value="False" />
                         </Trigger>

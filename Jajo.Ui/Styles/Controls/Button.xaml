@@ -87,7 +87,8 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding Border.CornerRadius}">
-                        <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <ContentPresenter
                                 x:Name="ContentPresenter"
                                 Content="{TemplateBinding Content}"
@@ -100,22 +101,30 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="IsPressed" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="ContentBorder" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="ContentBorder" Property="BorderBrush" Value="{Binding MouseOverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="ContentBorder" Property="Background"
+                                    Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="ContentBorder" Property="BorderBrush"
+                                    Value="{Binding MouseOverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="IsPressed" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="ContentBorder" Property="Background" Value="{Binding PressedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="ContentBorder" Property="BorderBrush" Value="{Binding PressedBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{Binding PressedForeground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="ContentBorder" Property="Background"
+                                    Value="{Binding PressedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="ContentBorder" Property="BorderBrush"
+                                    Value="{Binding PressedBorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground"
+                                    Value="{Binding PressedForeground, RelativeSource={RelativeSource TemplatedParent}}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ContentBorder" Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
-                            <Setter TargetName="ContentBorder" Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
-                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+                            <Setter TargetName="ContentBorder" Property="Background"
+                                    Value="{DynamicResource ControlFillColorDisabledBrush}" />
+                            <Setter TargetName="ContentBorder" Property="BorderBrush"
+                                    Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground"
+                                    Value="{DynamicResource TextFillColorDisabledBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -218,7 +227,8 @@
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource LightBlue}" />
+                                    <Setter TargetName="border" Property="Background"
+                                            Value="{StaticResource LightBlue}" />
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
@@ -279,14 +289,23 @@
                                                 Foreground="{StaticResource LightBlue}"
                                                 Style="{Binding ElementName=ContentPresenter, Path=Content.Style}" />
                                             <DataTemplate.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=ContentBorder, Path=IsMouseOver}" Value="True">
-                                                    <Setter TargetName="DynamicSvg" Property="Foreground" Value="{StaticResource DarkBlue}" />
+                                                <DataTrigger
+                                                    Binding="{Binding ElementName=ContentBorder, Path=IsMouseOver}"
+                                                    Value="True">
+                                                    <Setter TargetName="DynamicSvg" Property="Foreground"
+                                                            Value="{StaticResource DarkBlue}" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsEnabled}" Value="False">
-                                                    <Setter TargetName="DynamicSvg" Property="Foreground" Value="{StaticResource MainGray}" />
+                                                <DataTrigger
+                                                    Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsEnabled}"
+                                                    Value="False">
+                                                    <Setter TargetName="DynamicSvg" Property="Foreground"
+                                                            Value="{StaticResource MainGray}" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsPressed}" Value="True">
-                                                    <Setter TargetName="DynamicSvg" Property="Foreground" Value="{StaticResource BluePressedColor}" />
+                                                <DataTrigger
+                                                    Binding="{Binding RelativeSource={RelativeSource AncestorType=controls:Button}, Path=IsPressed}"
+                                                    Value="True">
+                                                    <Setter TargetName="DynamicSvg" Property="Foreground"
+                                                            Value="{StaticResource BluePressedColor}" />
                                                 </DataTrigger>
                                             </DataTemplate.Triggers>
                                         </DataTemplate>

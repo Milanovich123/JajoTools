@@ -12,7 +12,7 @@ using Jajo.Ui.MVVM.Contracts;
 namespace Jajo.Ui.MVVM.Services;
 
 /// <summary>
-/// A service that provides methods related to displaying the <see cref="ISnackbarControl"/>.
+///     A service that provides methods related to displaying the <see cref="ISnackbarControl" />.
 /// </summary>
 public class SnackbarService : ISnackbarService
 {
@@ -99,6 +99,7 @@ public class SnackbarService : ISnackbarService
 
         return _snackbar.Show(message, appearance);
     }
+
     /// <inheritdoc />
     public bool Show(string title, string message)
     {
@@ -157,6 +158,7 @@ public class SnackbarService : ISnackbarService
 
         return await _snackbar.ShowAsync(message, appearance);
     }
+
     /// <inheritdoc />
     public async Task<bool> ShowAsync(string title, string message)
     {
@@ -176,6 +178,7 @@ public class SnackbarService : ISnackbarService
 
         return await _snackbar.ShowAsync(title, message, appearance);
     }
+
     /// <inheritdoc />
     public bool Hide()
     {
