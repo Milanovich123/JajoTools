@@ -7,12 +7,12 @@ UI plugin samples for the Jajo company
 
 # Current status
 ### Export plugin:
-- Export tab - 95% done 🔵
+- Export tab - 100% done 🟢
 - Schedular tab - 100% done 🟢
 
 ### Tools plugin:
-- Hide tab - 0% 🟡
-- Werkpakket - 0% 🟡
+- Hide tab - 100% 🟢
+- Werkpakket - 100% 🟢
 
 # How to use
 - First of all download the project or clone the repository.
