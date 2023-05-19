@@ -17,9 +17,9 @@ public class SchedulerViewModel : PageBaseViewModel, IViewModelBase
 
         // Just an example how to use a snackbar
         if (IsExportToDwgSelected)
-            SnackbarService.Show("Export succeed!", ControlAppearance.Success);
+            SnackbarService.Show("Schedule was updated!", ControlAppearance.Success);
         // logic when the dwg export check box was not selected
         else
-            SnackbarService.Show("Export failed!", ControlAppearance.Failure);
+            SnackbarService.Show("Schedule update failed!", ControlAppearance.Failure);
     }
 }

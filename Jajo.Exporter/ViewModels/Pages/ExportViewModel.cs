@@ -21,6 +21,6 @@ public class ExportViewModel : PageBaseViewModel, IViewModelBase
 
         // logic when the dwg export check box was not selected
         else
-            SnackbarService.Show("Submit button clicked!", ControlAppearance.Success);
+            SnackbarService.Show("Export succeed!", ControlAppearance.Success);
     }
 }
