@@ -1,36 +1,64 @@
 using System.Collections.ObjectModel;
 using System.Windows;
+using Autodesk.Revit.DB;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Jajo.Exporter.Commands.Handlers;
+using Jajo.Utils.Core;
 
 namespace Jajo.Exporter.ViewModels.Pages;
 
 public abstract partial class PageBaseViewModel : ObservableObject
 {
-    private ObservableCollection<SheetExample> _exportSheets = new();
-    private ObservableCollection<ViewExample> _exportViews = new();
+    protected ObservableCollection<SheetExample> _exportSheets = new();
+    protected ObservableCollection<ViewExample> _exportViews = new();
+    private List<Autodesk.Revit.DB.ViewSheet> _sheetCollection = new();
+    private List<Autodesk.Revit.DB.View> _viewCollection = new();
     private bool _isExportToDwgSelected;
     private bool _isMainButtonAvailable;
     private ICollection<SheetExample> _selectedSheets;
     private ICollection<ViewExample> _selectedViews;
     private bool _switchPhaseBoolValue;
+    protected ExportEventHandler _exportEventHandler;
 
     protected PageBaseViewModel()
     {
         // Insert logic of initial collections
         PhaseSwitched();
+        _exportEventHandler = new ExportEventHandler();
     }
 
     // In real project you should change type
     public ObservableCollection<ViewExample> ExportViews
     {
-        get => _exportViews;
+        get
+        {
+            if (_exportViews.Any()) return _exportViews;
+
+            foreach (View _view in _viewCollection)
+            {
+                string Name = _view.Name;
+                _exportViews.Add(new ViewExample() { RevitView = _view, Name = Name });
+            }
+
+            return _exportViews;
+        }
         private set => SetProperty(ref _exportViews, value);
     }
 
     public ObservableCollection<SheetExample> ExportSheets
     {
-        get => _exportSheets;
+        get
+        {
+            if (_exportSheets.Any()) return _exportSheets;
+
+            foreach (Autodesk.Revit.DB.ViewSheet _sheet in _sheetCollection)
+            {
+                _exportSheets.Add(new SheetExample() { RevitSheet = _sheet, Name = _sheet.SheetNumber + " - " + _sheet.Name });
+            }
+
+            return _exportSheets;
+        }
         private set => SetProperty(ref _exportSheets, value);
     }
 
@@ -115,21 +143,24 @@ public abstract partial class PageBaseViewModel : ObservableObject
         else
         {
             // Insert there logic of finding VO/DO stage files
-            ExportViews = new ObservableCollection<ViewExample>
-            {
-                new() { Name = "(VO/DO) first view" },
-                new() { Name = "(VO/DO) second view" },
-                new() { Name = "(VO/DO) third view" }
-            };
 
-            ExportSheets = new ObservableCollection<SheetExample>
+            _exportViews.Clear();
+            _viewCollection = RevitApi.GetViews("vo");
+            foreach (View _view in _viewCollection)
             {
-                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
-                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
-                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
-                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" },
-                new() { Name = "(VO/DO) 1234-TL - Tekeningenlijst" }
-            };
+                string Name = _view.Name;
+                _exportViews.Add(new ViewExample() { RevitView = _view, Name = Name });
+            }
+            ExportViews = _exportViews;
+
+            _exportSheets.Clear();
+            _sheetCollection = RevitApi.GetSheets("vo");
+            foreach (Autodesk.Revit.DB.ViewSheet _sheet in _sheetCollection)
+            {
+                _exportSheets.Add(new SheetExample() { RevitSheet = _sheet, Name = _sheet.SheetNumber + " - " + _sheet.Name });
+            }
+            ExportSheets = _exportSheets;
+
         }
 
         UpdateChBoxesState();
@@ -168,7 +199,7 @@ public class ViewExample : ObservableObject
         get => _isSelected;
         set => SetProperty(ref _isSelected, value);
     }
-
+    public View RevitView { get; set; }
     public string Name { get; set; }
 }
 
@@ -184,6 +215,6 @@ public class SheetExample : ObservableObject
         get => _isSelected;
         set => SetProperty(ref _isSelected, value);
     }
-
+    public ViewSheet RevitSheet { get; set; }
     public string Name { get; set; }
 }
