@@ -113,7 +113,7 @@ public partial class HideTabsViewModel : PageBaseViewModel
     [RelayCommand]
     private void Help()
     {
-        MessageBox.Show("Kies welke Revit Tabs je wilt laten zien of juist niet.");
+        MessageBox.Show("Kies welke Revit Tabs je wilt laten zien of verstoppen.");
     }
 
     [RelayCommand]

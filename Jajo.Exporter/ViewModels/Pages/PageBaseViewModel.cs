@@ -1,6 +1,9 @@
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Jajo.Exporter.Commands.Handlers;
@@ -100,7 +103,18 @@ public abstract partial class PageBaseViewModel : ObservableObject
     [RelayCommand]
     private void Help()
     {
-        MessageBox.Show("Help button clicked");
+        string dir = "S:\\Exports";
+        TaskDialog td = new TaskDialog("Succes");
+        td.MainInstruction = "Selecteer welke views (links) je wilt exporteren naar .ifc. Selecteer welke sheets (rechts) je wilt exporteren naar .pdf en eventueel .dwg.\nZe zullen vervolgens in deze map terechtkomen: ";
+        td.MainContent = dir;
+        td.AddCommandLink(TaskDialogCommandLinkId.CommandLink1, "Open locatie.");
+        td.CommonButtons = TaskDialogCommonButtons.Ok;
+        td.DefaultButton = TaskDialogResult.Ok;
+        TaskDialogResult tdRes = td.Show();
+        if (tdRes == TaskDialogResult.CommandLink1)
+        {
+            Process.Start(dir);
+        }
     }
 
     [RelayCommand]

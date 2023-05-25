@@ -84,7 +84,7 @@ public partial class WerkpakketViewModel : PageBaseViewModel
     [RelayCommand]
     private void Help()
     {
-        MessageBox.Show(SelectedCompany.Prefix);
+        MessageBox.Show("Deze applicatie is ontworpen om werkpakketten te maken voor de verschillende bedrijven, kies het gewenste bedrijf en druk op de knoppen om standaard werkpakketten te maken of voer een zelf een naam in. Wanneer er nieuwe objecten gemodelleerd zijn kun je de update knop gebruiken om ze in de juiste werkpakket te zetten.");
     }
 
     private void CreateCompaniesCollection()
