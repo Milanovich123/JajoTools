@@ -72,6 +72,9 @@
 		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="*" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<Reference Include="AdWindows">
+		  <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2021\AdWindows.dll</HintPath>
+		</Reference>
 		<Reference Include="System.ComponentModel.DataAnnotations" />
 		<Using Include="Nice3point.Revit.Extensions" />
 		<Using Include="JetBrains.Annotations" />

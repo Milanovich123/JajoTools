@@ -1,5 +1,7 @@
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
+using Autodesk.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Jajo.Ui.Common;
@@ -40,30 +42,34 @@ public partial class HideTabsViewModel : PageBaseViewModel
 
     private void CreateTabCollection()
     {
-        Tabs = new ObservableCollection<TabExample>
-        {
-            new() { Name = "Architecture" },
-            new() { Name = "Structure" },
-            new() { Name = "Steel" },
-            new() { Name = "Precast" },
-            new() { Name = "Systems" },
-            new() { Name = "Annotate" },
-            new() { Name = "View" },
-            new() { Name = "DiRoots" },
-            new() { Name = "Modify" },
-            new() { Name = "Insert" },
+        Autodesk.Windows.RibbonControl ribbon = Autodesk.Windows.ComponentManager.Ribbon;
+        string[] input = { "BIM", "Create", "In-Place Model", "In-Place Mass", "Zone", "Family Editor", "Jajo" };
+        List<string> tabTitles = new List<string>();
+        tabTitles.AddRange(input);
+        Tabs = new ObservableCollection<TabExample>();
 
-            new() { Name = "Lololo" },
-            new() { Name = "Structure" },
-            new() { Name = "Steel" },
-            new() { Name = "Precast" },
-            new() { Name = "Systems" },
-            new() { Name = "Annotate" },
-            new() { Name = "View" },
-            new() { Name = "DiRoots" },
-            new() { Name = "Modify" },
-            new() { Name = "Insert" }
-        };
+        foreach (Autodesk.Windows.RibbonTab tab in ribbon.Tabs)
+        {
+            if (tabTitles.Contains(tab.Title))
+            {
+                continue;
+            }
+            Tabs.Add(new TabExample { Name = tab.Title, IsSelected = tab.IsVisible, RevitTab = tab});
+            tabTitles.Add(tab.Title);
+        }
+
+    }
+
+    private void SaveSettings(bool hide)
+    {
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        path = path + "\\hideTabsSettings.txt";
+        File.WriteAllText(path, "Revit Hide Tabs Settings\n");
+        File.AppendAllText(path, hide.ToString());
+        foreach (var item in SelectedTabs)
+        {
+            File.AppendAllText(path, "\n" + item.Name);
+        }
     }
 
     [RelayCommand]
@@ -71,6 +77,12 @@ public partial class HideTabsViewModel : PageBaseViewModel
     {
         try
         {
+            SaveSettings(false);
+            foreach (var tab in Tabs)
+            {
+                tab.RevitTab.IsVisible = false;
+                if (tab.IsSelected) tab.RevitTab.IsVisible = true;
+            }
             SnackbarService.Show($"{SelectedTabs.Count} tabs were shown", ControlAppearance.Success);
         }
         catch (Exception)
@@ -84,6 +96,12 @@ public partial class HideTabsViewModel : PageBaseViewModel
     {
         try
         {
+            SaveSettings(true);
+            foreach (var tab in Tabs)
+            {
+                tab.RevitTab.IsVisible = true;
+                if (tab.IsSelected) tab.RevitTab.IsVisible = false;
+            }
             SnackbarService.Show($"{SelectedTabs.Count} tabs were hidden", ControlAppearance.Success);
         }
         catch (Exception)
@@ -95,7 +113,7 @@ public partial class HideTabsViewModel : PageBaseViewModel
     [RelayCommand]
     private void Help()
     {
-        MessageBox.Show("Help button clicked");
+        MessageBox.Show("Kies welke Revit Tabs je wilt laten zien of juist niet.");
     }
 
     [RelayCommand]
@@ -129,6 +147,8 @@ public class TabExample : ObservableObject
         get => _isSelected;
         set => SetProperty(ref _isSelected, value);
     }
+
+    public Autodesk.Windows.RibbonTab RevitTab { get; set; }
 
     public string Name { get; set; }
 }
