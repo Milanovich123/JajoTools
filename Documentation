@@ -1,0 +1,11 @@
+These are the documentations for the Eneca Plugin.
+
+Inside the plugin the RevitApi (In JaJo.Utils, Core) is a static class and can be accessed from anywhere.
+It is used to get data from the Revit API such as the sheets and views from a project.
+
+The pages for the exporter button are located in JaJo.Exporter > ViewModels > Pages
+The pages for the tools button are located in JaJo.Tools > ViewModels > Pages
+These pages describe what the user sees when pressing the buttons. 
+
+The logic behind the buttons on the pages can be found in JaJo.Exporter/Tools > Commands > Handlers.
+These files dictate what happens when buttons are pressed.
